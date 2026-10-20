@@ -922,6 +922,32 @@ async function handleForm(form) {
 async function sendAssistantQuery(query) {
   const windowEl = document.querySelector("#assistant-chat-window");
   if (!windowEl) return;
+  const form = document.querySelector("#assistant-form");
+  if (form?.dataset.assistantPending === "true") return;
+  const input = form?.querySelector("#assistant-input");
+  const submit = form?.querySelector("#assistant-submit");
+  const submitLabel = submit?.querySelector("span");
+  const suggestions = document.querySelector("#assistant-suggestions");
+  const suggestionsToggle = document.querySelector("#assistant-suggestions-toggle");
+  const suggestionChips = suggestions ? [...suggestions.querySelectorAll(".m3-sugg-chip")] : [];
+
+  if (form) {
+    form.dataset.assistantPending = "true";
+    form.setAttribute("aria-busy", "true");
+  }
+  if (input) input.disabled = true;
+  if (submit) {
+    submit.disabled = true;
+    submit.setAttribute("aria-busy", "true");
+  }
+  if (submitLabel) submitLabel.textContent = localeText("Готовлю ответ…", "Жауап дайындалуда…");
+  suggestionChips.forEach(button => { button.disabled = true; });
+
+  if (suggestions && !suggestions.classList.contains("is-collapsed")) {
+    suggestions.classList.add("is-collapsed");
+    suggestionsToggle?.setAttribute("aria-expanded", "false");
+    if (suggestionsToggle) suggestionsToggle.textContent = localeText("Показать примеры", "Мысалдарды көрсету");
+  }
 
   const userMsg = document.createElement("div");
   userMsg.className = "m3-chat-msg m3-chat-msg--user";
@@ -993,6 +1019,18 @@ async function sendAssistantQuery(query) {
       '</div></div>';
     windowEl.appendChild(errMsg);
     windowEl.scrollTop = windowEl.scrollHeight;
+  } finally {
+    if (form) {
+      delete form.dataset.assistantPending;
+      form.removeAttribute("aria-busy");
+    }
+    if (input) input.disabled = false;
+    if (submit) {
+      submit.disabled = false;
+      submit.removeAttribute("aria-busy");
+    }
+    if (submitLabel) submitLabel.textContent = localeText("Спросить ИИ", "ЖИ-ден сұрау");
+    suggestionChips.forEach(button => { button.disabled = false; });
   }
 }
 
@@ -1081,6 +1119,17 @@ document.addEventListener("click", async (event) => {
   if (presetBtn) {
     const preset = presetBtn.dataset.preset;
     applySimulatorPreset(preset);
+    return;
+  }
+  const suggestionsToggle = event.target.closest("#assistant-suggestions-toggle");
+  if (suggestionsToggle) {
+    const suggestions = suggestionsToggle.closest("#assistant-suggestions");
+    if (!suggestions) return;
+    const collapsed = suggestions.classList.toggle("is-collapsed");
+    suggestionsToggle.setAttribute("aria-expanded", String(!collapsed));
+    suggestionsToggle.textContent = collapsed
+      ? localeText("Показать примеры", "Мысалдарды көрсету")
+      : localeText("Свернуть", "Жасыру");
     return;
   }
   const suggChip = event.target.closest(".m3-sugg-chip");

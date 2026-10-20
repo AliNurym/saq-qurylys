@@ -17,9 +17,12 @@ export function renderAssistantPage(meta) {
       '</div>' +
     '</header>' +
     '<div class="m3-assistant-card panel">' +
-      '<div class="m3-chat-suggestions">' +
-        '<span class="m3-sugg-title">' + escapeHtml(localeText("Рекомендуемые запросы:", "Ұсынылатын сұрақтар:")) + '</span>' +
-        '<div class="m3-sugg-chips-wrap">' +
+      '<div class="m3-chat-suggestions" id="assistant-suggestions">' +
+        '<div class="m3-sugg-heading">' +
+          '<span class="m3-sugg-title">' + escapeHtml(localeText("Рекомендуемые запросы", "Ұсынылатын сұрақтар")) + '</span>' +
+          '<button type="button" class="m3-sugg-toggle" id="assistant-suggestions-toggle" aria-expanded="true" aria-controls="assistant-suggestions-list">' + escapeHtml(localeText("Свернуть", "Жасыру")) + '</button>' +
+        '</div>' +
+        '<div class="m3-sugg-chips-wrap" id="assistant-suggestions-list">' +
           '<button type="button" class="m3-sugg-chip" data-query="Законен ли ЖК Altai Grand Park?">' + escapeHtml(localeText("Законен ли ЖК Altai Grand Park?", "Altai Grand Park ТК заңды ма?")) + '</button>' +
           '<button type="button" class="m3-sugg-chip" data-query="Можно ли покупать квартиру по договору бронирования?">' + escapeHtml(localeText("Можно ли покупать по договору бронирования?", "Брондау шартымен пәтер алуға бола ма?")) + '</button>' +
           '<button type="button" class="m3-sugg-chip" data-query="Каков статус ЖК Oskemen Deluxe?">' + escapeHtml(localeText("Каков статус ЖК Oskemen Deluxe?", "Oskemen Deluxe ТК мәртебесі қандай?")) + '</button>' +

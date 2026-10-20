@@ -4110,8 +4110,8 @@ html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
 .m3-assistant-card {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 240px);
-  min-height: 540px;
+  height: calc(100dvh - 240px);
+  min-height: min(540px, calc(100dvh - 240px));
   background: var(--surface);
   border-radius: var(--md-shape-xl);
   border: 1px solid var(--outline-variant);
@@ -4124,9 +4124,36 @@ html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
   background: var(--surface-container-low);
   border-bottom: 1px solid var(--line-soft);
   display: flex;
-  flex-wrap: wrap;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.m3-sugg-heading {
+  display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.m3-sugg-toggle {
+  border: 0;
+  padding: 3px 0;
+  background: transparent;
+  color: var(--md-sys-color-primary);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.m3-sugg-toggle:hover {
+  text-decoration: underline;
+}
+
+.m3-chat-suggestions.is-collapsed .m3-sugg-chips-wrap {
+  display: none;
 }
 
 .m3-sugg-title {
@@ -4163,8 +4190,10 @@ html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
 }
 
 .m3-chat-window {
-  flex: 1;
+  flex: 1 1 auto;
+  min-height: 0;
   overflow-y: auto;
+  overscroll-behavior-y: contain;
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -4174,6 +4203,7 @@ html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
 
 .m3-chat-msg {
   display: flex;
+  flex: 0 0 auto;
   gap: 12px;
   max-width: 82%;
   animation: fadeIn 0.25s ease;
@@ -4307,6 +4337,7 @@ html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
 
 .m3-chat-input-bar {
   display: flex;
+  flex: 0 0 auto;
   align-items: center;
   gap: 12px;
   padding: 14px 20px;
@@ -4339,6 +4370,46 @@ html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
   align-items: center;
   gap: 8px;
   white-space: nowrap;
+}
+
+.m3-chat-input-bar button:disabled,
+.m3-sugg-chip:disabled {
+  cursor: wait;
+  opacity: 0.68;
+}
+
+@media (max-width: 560px) {
+  .m3-assistant-card {
+    height: calc(100dvh - 240px);
+    min-height: min(420px, calc(100dvh - 240px));
+  }
+
+  .m3-chat-suggestions {
+    padding: 11px 13px;
+  }
+
+  .m3-chat-window {
+    padding: 14px;
+  }
+
+  .m3-chat-msg {
+    max-width: 100%;
+    gap: 8px;
+  }
+
+  .m3-chat-input-bar {
+    gap: 8px;
+    padding: 10px 12px;
+  }
+
+  .m3-chat-input-bar input {
+    min-width: 0;
+    padding: 11px 14px;
+  }
+
+  .m3-chat-input-bar button {
+    padding: 11px 14px;
+  }
 }
 
 /* Registry filter layout */
