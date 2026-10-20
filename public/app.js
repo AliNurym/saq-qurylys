@@ -355,6 +355,7 @@ function restoreFormState(formState,disclosureState,focusedId,latestSearch=null)
 function documentTitle(path) {
   if(path==='/account')return localeText('Учётная запись — SAQ QURYLYS','Тіркелгі — SAQ QURYLYS');
   if (path === "/complexes/import") return localeText("Импорт реестра — SAQ QURYLYS","Тізілімді импорттау — SAQ QURYLYS");
+  if (path === "/assistant") return localeText("ИИ-Помощник — SAQ QURYLYS", "ЖИ-Көмекші — SAQ QURYLYS");
   if (path === "/map") return "Карта — SAQ QURYLYS";
   if (path === "/settings") return t("settings") + " — SAQ QURYLYS";
   const key = path === "/dashboard" || path === "/" ? "overview" : path.startsWith("/complexes") ? "registry" : path.startsWith("/advertisements") ? "advertisements" : path.startsWith("/signals") ? "signals" : "history";
