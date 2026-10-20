@@ -1,0 +1,21 @@
+.env
+.env.*
+!.env.example
+node_modules/
+/data/
+coverage/
+backups/
+.DS_Store
+Thumbs.db
+
+# Local Codex/design tooling and review captures
+/.agents/
+/.codex/
+.impeccable/questions/
+.impeccable/mocks/
+.impeccable/review/
+
+# Temporary renders and alternate local deliverable drafts
+/tmp/
+/deliverables/
+/.vercel/

@@ -1,0 +1,416 @@
+{
+  "preparedAt": "2026-10-19T10:55:12.362Z",
+  "catalog": {
+    "url": "https://api.homeportal.kz/api/v1/getobjects",
+    "method": "POST",
+    "query": {
+      "authority": "",
+      "city_id": 73,
+      "is_paginate": true,
+      "region_id": 16,
+      "search": "",
+      "build_status": "2",
+      "status": "2,3"
+    },
+    "observedAt": "2026-10-19T10:53:53.697Z",
+    "bytes": 31860,
+    "sha256": "9f7c7919161cafed31241430cf0e40d3aaad7f4c64a9cb0e1903d2bb12af7b3d"
+  },
+  "sourceCount": 10,
+  "csvCount": 8,
+  "screening": {
+    "method": "Distance from coordinate-wise median of nonzero returned catalogue coordinates",
+    "anchor": [
+      49.904538,
+      82.618754
+    ],
+    "thresholdKm": 25,
+    "meaning": "Analytical screening only; not an official city boundary or proof coordinates are false"
+  },
+  "records": [
+    {
+      "sourceId": 1505,
+      "sourceUrl": "https://homeportal.kz/ru/projects/1505",
+      "provenance": {
+        "id": 1505,
+        "url": "https://api.homeportal.kz/api/v1/objects-detail/1505",
+        "observedAt": "2026-10-19T10:54:19.975Z",
+        "bytes": 6716,
+        "sha256": "270fbf706f3cb8db45d5410c20d0e70a11e149730a0e9c2b192191adce738c5f"
+      },
+      "sourceUpdatedAt": null,
+      "verification": "UNVERIFIED",
+      "scope": "Homeportal city_id=73, build_status=2, status=2,3; pilot membership unknown",
+      "name": "МЖК \"PARK LINE\"",
+      "address": "г. Усть-Каменогорск, пр. И. Есенберлина, д. 56",
+      "city": "Усть-Каменогорск",
+      "developerName": "ТОО \"Mercury Construction\"",
+      "developerBin": "220740026935",
+      "coordinates": {
+        "latitude": "49.917561",
+        "longitude": "82.619097",
+        "distanceFromCatalogMedianKm": 1.4
+      },
+      "cadastralNumber": "05-085-091-1463",
+      "authorizedCompany": {
+        "name": "TOO \"Elit Stroy group\"",
+        "bin": "190740008285"
+      },
+      "authorityClaim": {
+        "label": "Разрешение МИО",
+        "number": "KZ25PDD00004205",
+        "issueDate": "07.10.2026"
+      },
+      "plannedCommissioning": "18.11.2027",
+      "website": "https://www.instagram.com/reel/DdjN9IPtfyW/",
+      "qualityFlags": [],
+      "includedInCsv": true
+    },
+    {
+      "sourceId": 1487,
+      "sourceUrl": "https://homeportal.kz/ru/projects/1487",
+      "provenance": {
+        "id": 1487,
+        "url": "https://api.homeportal.kz/api/v1/objects-detail/1487",
+        "observedAt": "2026-10-19T10:54:20.066Z",
+        "bytes": 6525,
+        "sha256": "720be209ab0f9504e33a709ab8de93de7800f511f1740edf5c8c34b53d8f709d"
+      },
+      "sourceUpdatedAt": null,
+      "verification": "UNVERIFIED",
+      "scope": "Homeportal city_id=73, build_status=2, status=2,3; pilot membership unknown",
+      "name": "ЖК «Престиж» (Sparkle Diamond) (ГС: Инвестор)",
+      "address": "г. Усть-Каменогорск, в 19-ом жилом районе, прсч. ул. Ю. Увалиева и Кокжал Барака",
+      "city": "Усть-Каменогорск",
+      "developerName": "ТОО \"Композит-7\"",
+      "developerBin": "050640012251",
+      "coordinates": {
+        "latitude": "0.0",
+        "longitude": "0.0",
+        "distanceFromCatalogMedianKm": 9479.8
+      },
+      "cadastralNumber": "05-085-102-2205",
+      "authorizedCompany": {
+        "name": "TOO \"Sparkle Diamond\"",
+        "bin": "220540001566"
+      },
+      "authorityClaim": {
+        "label": "Гарантия АО \"КЖК\"",
+        "number": "ДС №1 к ДПГ-22-16-055/120",
+        "issueDate": "10.05.2024"
+      },
+      "plannedCommissioning": "30.11.2026",
+      "website": null,
+      "qualityFlags": [
+        "ZERO_COORDINATES"
+      ],
+      "includedInCsv": false
+    },
+    {
+      "sourceId": 1452,
+      "sourceUrl": "https://homeportal.kz/ru/projects/1452",
+      "provenance": {
+        "id": 1452,
+        "url": "https://api.homeportal.kz/api/v1/objects-detail/1452",
+        "observedAt": "2026-10-19T10:54:20.390Z",
+        "bytes": 4499,
+        "sha256": "e7090fc2bf47cfa8d044d1e81b9087bb0a267ee2c6c739cb4ffaedcf66f5449f"
+      },
+      "sourceUpdatedAt": null,
+      "verification": "UNVERIFIED",
+      "scope": "Homeportal city_id=73, build_status=2, status=2,3; pilot membership unknown",
+      "name": "ЖК \"Satti City\"",
+      "address": "г. Усть-Каменогорск, ул. Есенберлина, д. 84",
+      "city": "Усть-Каменогорск",
+      "developerName": "ТОО \"СТ-77\"",
+      "developerBin": "211040009188",
+      "coordinates": {
+        "latitude": "49.919223",
+        "longitude": "82.616442",
+        "distanceFromCatalogMedianKm": 1.6
+      },
+      "cadastralNumber": "05-085-091-1159",
+      "authorizedCompany": {
+        "name": "ТОО \"GB (Good Build)\"",
+        "bin": "060540000988"
+      },
+      "authorityClaim": {
+        "label": "Разрешение МИО",
+        "number": "KZ05PDD00004080",
+        "issueDate": "17.08.2026"
+      },
+      "plannedCommissioning": "30.01.2027",
+      "website": null,
+      "qualityFlags": [],
+      "includedInCsv": true
+    },
+    {
+      "sourceId": 1428,
+      "sourceUrl": "https://homeportal.kz/ru/projects/1428",
+      "provenance": {
+        "id": 1428,
+        "url": "https://api.homeportal.kz/api/v1/objects-detail/1428",
+        "observedAt": "2026-10-19T10:54:20.575Z",
+        "bytes": 6329,
+        "sha256": "66a175246870e5ec3528b6e1e2222b9c5765c2b9c2316cd7118af412e9cc4503"
+      },
+      "sourceUpdatedAt": null,
+      "verification": "UNVERIFIED",
+      "scope": "Homeportal city_id=73, build_status=2, status=2,3; pilot membership unknown",
+      "name": "МЖК \"Renesans\"",
+      "address": "г. Усть-Каменогорск, пр. а И. Есенберлина, д. 20/1",
+      "city": "Усть-Каменогорск",
+      "developerName": "ТОО \"Mercury Construction\"",
+      "developerBin": "220740026935",
+      "coordinates": {
+        "latitude": "48.994636",
+        "longitude": "84.770508",
+        "distanceFromCatalogMedianKm": 185.5
+      },
+      "cadastralNumber": "05-085-096-1232",
+      "authorizedCompany": {
+        "name": "TOO \"Elit Stroy group\"",
+        "bin": "190740008285"
+      },
+      "authorityClaim": {
+        "label": "Разрешение МИО",
+        "number": "639",
+        "issueDate": "19.05.2026"
+      },
+      "plannedCommissioning": "02.12.2027",
+      "website": "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDg5NDU1MDgyMTE3MDM0?story_media_id=3845289151881071255&igsh=OWpvaXoyanNudjBw",
+      "qualityFlags": [
+        "COORDINATE_OUTLIER_REVIEW"
+      ],
+      "includedInCsv": false
+    },
+    {
+      "sourceId": 1398,
+      "sourceUrl": "https://homeportal.kz/ru/projects/1398",
+      "provenance": {
+        "id": 1398,
+        "url": "https://api.homeportal.kz/api/v1/objects-detail/1398",
+        "observedAt": "2026-10-19T10:54:20.675Z",
+        "bytes": 7072,
+        "sha256": "31f79ff47f2b3b9cfe1c6aa059fbe203181144197f779981f93bd1c5a4e5960c"
+      },
+      "sourceUpdatedAt": null,
+      "verification": "UNVERIFIED",
+      "scope": "Homeportal city_id=73, build_status=2, status=2,3; pilot membership unknown",
+      "name": "ЖК \"Viva Life\"",
+      "address": "г. Усть-Каменогорск, пр. И. Есенберлина, д. 88/1",
+      "city": "Усть-Каменогорск",
+      "developerName": "ТОО \"K-Story LTD\"",
+      "developerBin": "021040009554",
+      "coordinates": {
+        "latitude": "49.920359",
+        "longitude": "82.618754",
+        "distanceFromCatalogMedianKm": 1.8
+      },
+      "cadastralNumber": "05-085-091-1658",
+      "authorizedCompany": {
+        "name": "ТОО «CRONUS STROY»",
+        "bin": "210540016344"
+      },
+      "authorityClaim": {
+        "label": "Участие БВУ",
+        "number": "597/МҚЗТ-К-83у",
+        "issueDate": "08.05.2026"
+      },
+      "plannedCommissioning": "28.08.2027",
+      "website": null,
+      "qualityFlags": [],
+      "includedInCsv": true
+    },
+    {
+      "sourceId": 1375,
+      "sourceUrl": "https://homeportal.kz/ru/projects/1375",
+      "provenance": {
+        "id": 1375,
+        "url": "https://api.homeportal.kz/api/v1/objects-detail/1375",
+        "observedAt": "2026-10-19T10:54:20.797Z",
+        "bytes": 4804,
+        "sha256": "98c65b78a4bd219940ce25e186d6784983725f9e3ed2d9810cf8d0d1c5132439"
+      },
+      "sourceUpdatedAt": null,
+      "verification": "UNVERIFIED",
+      "scope": "Homeportal city_id=73, build_status=2, status=2,3; pilot membership unknown",
+      "name": "ЖК \"Asyl Tau\"",
+      "address": "г. Усть-Каменогорск, ул. Сатпаева, д. 32",
+      "city": "Усть-Каменогорск",
+      "developerName": "ТОО \"Comfort-Uly Dala\"",
+      "developerBin": "190940009528",
+      "coordinates": {
+        "latitude": "49.904538",
+        "longitude": "82.620846",
+        "distanceFromCatalogMedianKm": 0.1
+      },
+      "cadastralNumber": "05-085-102-1117",
+      "authorizedCompany": {
+        "name": "ТОО \"Орда Трейдинг\"",
+        "bin": "200140023192"
+      },
+      "authorityClaim": {
+        "label": "Участие БВУ",
+        "number": "KZ62VWE00002712",
+        "issueDate": "10.04.2026"
+      },
+      "plannedCommissioning": "31.07.2027",
+      "website": null,
+      "qualityFlags": [],
+      "includedInCsv": true
+    },
+    {
+      "sourceId": 1331,
+      "sourceUrl": "https://homeportal.kz/ru/projects/1331",
+      "provenance": {
+        "id": 1331,
+        "url": "https://api.homeportal.kz/api/v1/objects-detail/1331",
+        "observedAt": "2026-10-19T10:54:20.887Z",
+        "bytes": 5817,
+        "sha256": "5005478fe435505d1038e2cbfae390e6c57f4f7f3bd8ea12f72fd28ed5f8b560"
+      },
+      "sourceUpdatedAt": null,
+      "verification": "UNVERIFIED",
+      "scope": "Homeportal city_id=73, build_status=2, status=2,3; pilot membership unknown",
+      "name": "ЖК \"ASYLTAS\"",
+      "address": "г. Усть-Каменогорск, ул. Кокжал Барака, уч. 1",
+      "city": "Усть-Каменогорск",
+      "developerName": "ТОО \"EKM COMPANY\"",
+      "developerBin": "201040022748",
+      "coordinates": {
+        "latitude": "49.887791",
+        "longitude": "82.610139",
+        "distanceFromCatalogMedianKm": 2
+      },
+      "cadastralNumber": "05-085-102-2617",
+      "authorizedCompany": {
+        "name": "ТОО \"EKM Garant\"",
+        "bin": "250940009541"
+      },
+      "authorityClaim": {
+        "label": "Участие БВУ",
+        "number": "KZ53VWE00002680",
+        "issueDate": "17.02.2026"
+      },
+      "plannedCommissioning": "31.12.2026",
+      "website": null,
+      "qualityFlags": [],
+      "includedInCsv": true
+    },
+    {
+      "sourceId": 1330,
+      "sourceUrl": "https://homeportal.kz/ru/projects/1330",
+      "provenance": {
+        "id": 1330,
+        "url": "https://api.homeportal.kz/api/v1/objects-detail/1330",
+        "observedAt": "2026-10-19T10:54:20.986Z",
+        "bytes": 5816,
+        "sha256": "beb5629ef8eb94ac829e5b986ed90967ea7b484b53a1f9f25cf1187ee758afac"
+      },
+      "sourceUpdatedAt": null,
+      "verification": "UNVERIFIED",
+      "scope": "Homeportal city_id=73, build_status=2, status=2,3; pilot membership unknown",
+      "name": "ЖК \"ASYLTAS\"",
+      "address": "г. Усть-Каменогорск, ул. Кокжал Барака, уч. 2",
+      "city": "Усть-Каменогорск",
+      "developerName": "ТОО \"EKM COMPANY\"",
+      "developerBin": "201040022748",
+      "coordinates": {
+        "latitude": "49.888656",
+        "longitude": "82.610568",
+        "distanceFromCatalogMedianKm": 1.9
+      },
+      "cadastralNumber": "05-085-102-2618",
+      "authorizedCompany": {
+        "name": "ТОО \"EKM Garant\"",
+        "bin": "250940009541"
+      },
+      "authorityClaim": {
+        "label": "Участие БВУ",
+        "number": "KZ26VWE00002681",
+        "issueDate": "17.02.2026"
+      },
+      "plannedCommissioning": "31.12.2026",
+      "website": null,
+      "qualityFlags": [],
+      "includedInCsv": true
+    },
+    {
+      "sourceId": 1329,
+      "sourceUrl": "https://homeportal.kz/ru/projects/1329",
+      "provenance": {
+        "id": 1329,
+        "url": "https://api.homeportal.kz/api/v1/objects-detail/1329",
+        "observedAt": "2026-10-19T10:54:21.087Z",
+        "bytes": 7225,
+        "sha256": "c882528207671be9338fea8b4c1d8f20b0fe8918a057f276c0e37c337ae1cdce"
+      },
+      "sourceUpdatedAt": null,
+      "verification": "UNVERIFIED",
+      "scope": "Homeportal city_id=73, build_status=2, status=2,3; pilot membership unknown",
+      "name": "ЖК \"Orda\"",
+      "address": "г. Усть-Каменогорск, ул. Кокжал Барака, д. 19а",
+      "city": "Усть-Каменогорск",
+      "developerName": "ТОО «СЕО GROUP»",
+      "developerBin": "040140006326",
+      "coordinates": {
+        "latitude": "49.890363",
+        "longitude": "82.618099",
+        "distanceFromCatalogMedianKm": 1.6
+      },
+      "cadastralNumber": "05-085-096-1553",
+      "authorizedCompany": {
+        "name": "ТОО \"ВОСТОК СТРОЙАЛЬЯНС\"",
+        "bin": "050440000210"
+      },
+      "authorityClaim": {
+        "label": "Разрешение МИО",
+        "number": "1383/МҚЗТ-С-331",
+        "issueDate": "13.10.2025"
+      },
+      "plannedCommissioning": "28.02.2027",
+      "website": null,
+      "qualityFlags": [],
+      "includedInCsv": true
+    },
+    {
+      "sourceId": 1141,
+      "sourceUrl": "https://homeportal.kz/ru/projects/1141",
+      "provenance": {
+        "id": 1141,
+        "url": "https://api.homeportal.kz/api/v1/objects-detail/1141",
+        "observedAt": "2026-10-19T10:54:21.189Z",
+        "bytes": 10652,
+        "sha256": "3f70cfa3408fda800ff1c50fbdfb5880994eacd81c4fedf709e74e7ca326a6cc"
+      },
+      "sourceUpdatedAt": null,
+      "verification": "UNVERIFIED",
+      "scope": "Homeportal city_id=73, build_status=2, status=2,3; pilot membership unknown",
+      "name": "ЖК \"Золотой квадрат\"",
+      "address": "г. Усть-Каменогорск, ул. Кайсенова, уч. 55/1",
+      "city": "Усть-Каменогорск",
+      "developerName": "ТОО \"НАУАН Корп\"",
+      "developerBin": "970640000190",
+      "coordinates": {
+        "latitude": "49.945497",
+        "longitude": "82.622997",
+        "distanceFromCatalogMedianKm": 4.6
+      },
+      "cadastralNumber": "05-085-070-424",
+      "authorizedCompany": {
+        "name": "ТОО «SA-Инжиниринг»",
+        "bin": "211140032196"
+      },
+      "authorityClaim": {
+        "label": "Гарантия АО \"КЖК\"",
+        "number": "ДПГ-25-16-078/194",
+        "issueDate": "18.08.2025"
+      },
+      "plannedCommissioning": "01.11.2026",
+      "website": "https://zolotoi-kvadrat.kz/",
+      "qualityFlags": [],
+      "includedInCsv": true
+    }
+  ]
+}

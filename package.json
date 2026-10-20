@@ -1,0 +1,21 @@
+{
+  "name": "saq-qurylys",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Evidence-first construction risk monitoring MVP",
+  "engines": {
+    "node": ">=24.19.0"
+  },
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "dev": "node src/server.mjs",
+    "start": "node src/server.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node --test",
+    "lint": "node scripts/lint.mjs",
+    "model:train": "node scripts/train-payment-model.mjs",
+    "db:seed": "node scripts/seed.mjs",
+    "db:reset": "node scripts/reset.mjs"
+  }
+}

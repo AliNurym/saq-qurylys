@@ -1,0 +1,718 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-16T07:31:24.6367363Z",
+  "title": "Design System: SAQ QURYLYS",
+  "extensions": {
+    "colorMeta": {
+      "navy-dark": {
+        "role": "primary",
+        "displayName": "navy dark",
+        "canonical": "#10223a",
+        "tonalRamp": [
+          "oklch(15% 0.0517 256.16)",
+          "oklch(26.43% 0.0517 256.16)",
+          "oklch(37.86% 0.0517 256.16)",
+          "oklch(49.29% 0.0517 256.16)",
+          "oklch(60.71% 0.0517 256.16)",
+          "oklch(72.14% 0.0517 256.16)",
+          "oklch(83.57% 0.0517 256.16)",
+          "oklch(95% 0.0517 256.16)"
+        ]
+      },
+      "navy": {
+        "role": "primary",
+        "displayName": "navy",
+        "canonical": "#152c49",
+        "tonalRamp": [
+          "oklch(15% 0.0608 255.15)",
+          "oklch(26.43% 0.0608 255.15)",
+          "oklch(37.86% 0.0608 255.15)",
+          "oklch(49.29% 0.0608 255.15)",
+          "oklch(60.71% 0.0608 255.15)",
+          "oklch(72.14% 0.0608 255.15)",
+          "oklch(83.57% 0.0608 255.15)",
+          "oklch(95% 0.0608 255.15)"
+        ]
+      },
+      "navy-mid": {
+        "role": "primary",
+        "displayName": "navy mid",
+        "canonical": "#264761",
+        "tonalRamp": [
+          "oklch(15% 0.0591 243.97)",
+          "oklch(26.43% 0.0591 243.97)",
+          "oklch(37.86% 0.0591 243.97)",
+          "oklch(49.29% 0.0591 243.97)",
+          "oklch(60.71% 0.0591 243.97)",
+          "oklch(72.14% 0.0591 243.97)",
+          "oklch(83.57% 0.0591 243.97)",
+          "oklch(95% 0.0591 243.97)"
+        ]
+      },
+      "navy-soft": {
+        "role": "primary",
+        "displayName": "navy soft",
+        "canonical": "#42647d",
+        "tonalRamp": [
+          "oklch(15% 0.0563 241.22)",
+          "oklch(26.43% 0.0563 241.22)",
+          "oklch(37.86% 0.0563 241.22)",
+          "oklch(49.29% 0.0563 241.22)",
+          "oklch(60.71% 0.0563 241.22)",
+          "oklch(72.14% 0.0563 241.22)",
+          "oklch(83.57% 0.0563 241.22)",
+          "oklch(95% 0.0563 241.22)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "ink",
+        "canonical": "#172a3b",
+        "tonalRamp": [
+          "oklch(15% 0.0403 246.83)",
+          "oklch(26.43% 0.0403 246.83)",
+          "oklch(37.86% 0.0403 246.83)",
+          "oklch(49.29% 0.0403 246.83)",
+          "oklch(60.71% 0.0403 246.83)",
+          "oklch(72.14% 0.0403 246.83)",
+          "oklch(83.57% 0.0403 246.83)",
+          "oklch(95% 0.0403 246.83)"
+        ]
+      },
+      "ink-secondary": {
+        "role": "neutral",
+        "displayName": "ink secondary",
+        "canonical": "#344d63",
+        "tonalRamp": [
+          "oklch(15% 0.0481 245.88)",
+          "oklch(26.43% 0.0481 245.88)",
+          "oklch(37.86% 0.0481 245.88)",
+          "oklch(49.29% 0.0481 245.88)",
+          "oklch(60.71% 0.0481 245.88)",
+          "oklch(72.14% 0.0481 245.88)",
+          "oklch(83.57% 0.0481 245.88)",
+          "oklch(95% 0.0481 245.88)"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "ink muted",
+        "canonical": "#50697d",
+        "tonalRamp": [
+          "oklch(15% 0.0436 242.83)",
+          "oklch(26.43% 0.0436 242.83)",
+          "oklch(37.86% 0.0436 242.83)",
+          "oklch(49.29% 0.0436 242.83)",
+          "oklch(60.71% 0.0436 242.83)",
+          "oklch(72.14% 0.0436 242.83)",
+          "oklch(83.57% 0.0436 242.83)",
+          "oklch(95% 0.0436 242.83)"
+        ]
+      },
+      "ink-note": {
+        "role": "neutral",
+        "displayName": "ink note",
+        "canonical": "#61788b",
+        "tonalRamp": [
+          "oklch(15% 0.0400 243.45)",
+          "oklch(26.43% 0.0400 243.45)",
+          "oklch(37.86% 0.0400 243.45)",
+          "oklch(49.29% 0.0400 243.45)",
+          "oklch(60.71% 0.0400 243.45)",
+          "oklch(72.14% 0.0400 243.45)",
+          "oklch(83.57% 0.0400 243.45)",
+          "oklch(95% 0.0400 243.45)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "rule",
+        "canonical": "#d4dee7",
+        "tonalRamp": [
+          "oklch(15% 0.0164 245.10)",
+          "oklch(26.43% 0.0164 245.10)",
+          "oklch(37.86% 0.0164 245.10)",
+          "oklch(49.29% 0.0164 245.10)",
+          "oklch(60.71% 0.0164 245.10)",
+          "oklch(72.14% 0.0164 245.10)",
+          "oklch(83.57% 0.0164 245.10)",
+          "oklch(95% 0.0164 245.10)"
+        ]
+      },
+      "rule-soft": {
+        "role": "neutral",
+        "displayName": "rule soft",
+        "canonical": "#e6edf2",
+        "tonalRamp": [
+          "oklch(15% 0.0101 238.51)",
+          "oklch(26.43% 0.0101 238.51)",
+          "oklch(37.86% 0.0101 238.51)",
+          "oklch(49.29% 0.0101 238.51)",
+          "oklch(60.71% 0.0101 238.51)",
+          "oklch(72.14% 0.0101 238.51)",
+          "oklch(83.57% 0.0101 238.51)",
+          "oklch(95% 0.0101 238.51)"
+        ]
+      },
+      "canvas": {
+        "role": "neutral",
+        "displayName": "canvas",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(15% 0.0069 247.90)",
+          "oklch(26.43% 0.0069 247.90)",
+          "oklch(37.86% 0.0069 247.90)",
+          "oklch(49.29% 0.0069 247.90)",
+          "oklch(60.71% 0.0069 247.90)",
+          "oklch(72.14% 0.0069 247.90)",
+          "oklch(83.57% 0.0069 247.90)",
+          "oklch(95% 0.0069 247.90)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "surface",
+        "canonical": "#f5f7f9",
+        "tonalRamp": [
+          "oklch(15% 0.0034 247.86)",
+          "oklch(26.43% 0.0034 247.86)",
+          "oklch(37.86% 0.0034 247.86)",
+          "oklch(49.29% 0.0034 247.86)",
+          "oklch(60.71% 0.0034 247.86)",
+          "oklch(72.14% 0.0034 247.86)",
+          "oklch(83.57% 0.0034 247.86)",
+          "oklch(95% 0.0034 247.86)"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "white",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(15% 0.0000 89.88)",
+          "oklch(26.43% 0.0000 89.88)",
+          "oklch(37.86% 0.0000 89.88)",
+          "oklch(49.29% 0.0000 89.88)",
+          "oklch(60.71% 0.0000 89.88)",
+          "oklch(72.14% 0.0000 89.88)",
+          "oklch(83.57% 0.0000 89.88)",
+          "oklch(95% 0.0000 89.88)"
+        ]
+      },
+      "teal": {
+        "role": "primary",
+        "displayName": "teal",
+        "canonical": "#087b83",
+        "tonalRamp": [
+          "oklch(15% 0.0890 202.95)",
+          "oklch(26.43% 0.0890 202.95)",
+          "oklch(37.86% 0.0890 202.95)",
+          "oklch(49.29% 0.0890 202.95)",
+          "oklch(60.71% 0.0890 202.95)",
+          "oklch(72.14% 0.0890 202.95)",
+          "oklch(83.57% 0.0890 202.95)",
+          "oklch(95% 0.0890 202.95)"
+        ]
+      },
+      "teal-hover": {
+        "role": "primary",
+        "displayName": "teal hover",
+        "canonical": "#05656c",
+        "tonalRamp": [
+          "oklch(15% 0.0775 203.28)",
+          "oklch(26.43% 0.0775 203.28)",
+          "oklch(37.86% 0.0775 203.28)",
+          "oklch(49.29% 0.0775 203.28)",
+          "oklch(60.71% 0.0775 203.28)",
+          "oklch(72.14% 0.0775 203.28)",
+          "oklch(83.57% 0.0775 203.28)",
+          "oklch(95% 0.0775 203.28)"
+        ]
+      },
+      "teal-bright": {
+        "role": "primary",
+        "displayName": "teal bright",
+        "canonical": "#0b8e94",
+        "tonalRamp": [
+          "oklch(15% 0.0983 200.18)",
+          "oklch(26.43% 0.0983 200.18)",
+          "oklch(37.86% 0.0983 200.18)",
+          "oklch(49.29% 0.0983 200.18)",
+          "oklch(60.71% 0.0983 200.18)",
+          "oklch(72.14% 0.0983 200.18)",
+          "oklch(83.57% 0.0983 200.18)",
+          "oklch(95% 0.0983 200.18)"
+        ]
+      },
+      "teal-wash": {
+        "role": "primary",
+        "displayName": "teal wash",
+        "canonical": "#def0ef",
+        "tonalRamp": [
+          "oklch(15% 0.0191 192.81)",
+          "oklch(26.43% 0.0191 192.81)",
+          "oklch(37.86% 0.0191 192.81)",
+          "oklch(49.29% 0.0191 192.81)",
+          "oklch(60.71% 0.0191 192.81)",
+          "oklch(72.14% 0.0191 192.81)",
+          "oklch(83.57% 0.0191 192.81)",
+          "oklch(95% 0.0191 192.81)"
+        ]
+      },
+      "green": {
+        "role": "secondary",
+        "displayName": "green",
+        "canonical": "#286447",
+        "tonalRamp": [
+          "oklch(15% 0.0790 159.76)",
+          "oklch(26.43% 0.0790 159.76)",
+          "oklch(37.86% 0.0790 159.76)",
+          "oklch(49.29% 0.0790 159.76)",
+          "oklch(60.71% 0.0790 159.76)",
+          "oklch(72.14% 0.0790 159.76)",
+          "oklch(83.57% 0.0790 159.76)",
+          "oklch(95% 0.0790 159.76)"
+        ]
+      },
+      "green-wash": {
+        "role": "secondary",
+        "displayName": "green wash",
+        "canonical": "#e1efe7",
+        "tonalRamp": [
+          "oklch(15% 0.0183 161.11)",
+          "oklch(26.43% 0.0183 161.11)",
+          "oklch(37.86% 0.0183 161.11)",
+          "oklch(49.29% 0.0183 161.11)",
+          "oklch(60.71% 0.0183 161.11)",
+          "oklch(72.14% 0.0183 161.11)",
+          "oklch(83.57% 0.0183 161.11)",
+          "oklch(95% 0.0183 161.11)"
+        ]
+      },
+      "amber": {
+        "role": "secondary",
+        "displayName": "amber",
+        "canonical": "#76520d",
+        "tonalRamp": [
+          "oklch(15% 0.0920 77.43)",
+          "oklch(26.43% 0.0920 77.43)",
+          "oklch(37.86% 0.0920 77.43)",
+          "oklch(49.29% 0.0920 77.43)",
+          "oklch(60.71% 0.0920 77.43)",
+          "oklch(72.14% 0.0920 77.43)",
+          "oklch(83.57% 0.0920 77.43)",
+          "oklch(95% 0.0920 77.43)"
+        ]
+      },
+      "amber-wash": {
+        "role": "secondary",
+        "displayName": "amber wash",
+        "canonical": "#f6edda",
+        "tonalRamp": [
+          "oklch(15% 0.0269 85.67)",
+          "oklch(26.43% 0.0269 85.67)",
+          "oklch(37.86% 0.0269 85.67)",
+          "oklch(49.29% 0.0269 85.67)",
+          "oklch(60.71% 0.0269 85.67)",
+          "oklch(72.14% 0.0269 85.67)",
+          "oklch(83.57% 0.0269 85.67)",
+          "oklch(95% 0.0269 85.67)"
+        ]
+      },
+      "red": {
+        "role": "secondary",
+        "displayName": "red",
+        "canonical": "#a13c3c",
+        "tonalRamp": [
+          "oklch(15% 0.1346 23.34)",
+          "oklch(26.43% 0.1346 23.34)",
+          "oklch(37.86% 0.1346 23.34)",
+          "oklch(49.29% 0.1346 23.34)",
+          "oklch(60.71% 0.1346 23.34)",
+          "oklch(72.14% 0.1346 23.34)",
+          "oklch(83.57% 0.1346 23.34)",
+          "oklch(95% 0.1346 23.34)"
+        ]
+      },
+      "red-wash": {
+        "role": "secondary",
+        "displayName": "red wash",
+        "canonical": "#f7e7e5",
+        "tonalRamp": [
+          "oklch(15% 0.0177 26.10)",
+          "oklch(26.43% 0.0177 26.10)",
+          "oklch(37.86% 0.0177 26.10)",
+          "oklch(49.29% 0.0177 26.10)",
+          "oklch(60.71% 0.0177 26.10)",
+          "oklch(72.14% 0.0177 26.10)",
+          "oklch(83.57% 0.0177 26.10)",
+          "oklch(95% 0.0177 26.10)"
+        ]
+      },
+      "hypothesis-blue": {
+        "role": "secondary",
+        "displayName": "hypothesis blue",
+        "canonical": "#3f6684",
+        "tonalRamp": [
+          "oklch(15% 0.0655 242.81)",
+          "oklch(26.43% 0.0655 242.81)",
+          "oklch(37.86% 0.0655 242.81)",
+          "oklch(49.29% 0.0655 242.81)",
+          "oklch(60.71% 0.0655 242.81)",
+          "oklch(72.14% 0.0655 242.81)",
+          "oklch(83.57% 0.0655 242.81)",
+          "oklch(95% 0.0655 242.81)"
+        ]
+      },
+      "hypothesis-wash": {
+        "role": "secondary",
+        "displayName": "hypothesis wash",
+        "canonical": "#e6eef5",
+        "tonalRamp": [
+          "oklch(15% 0.0128 244.26)",
+          "oklch(26.43% 0.0128 244.26)",
+          "oklch(37.86% 0.0128 244.26)",
+          "oklch(49.29% 0.0128 244.26)",
+          "oklch(60.71% 0.0128 244.26)",
+          "oklch(72.14% 0.0128 244.26)",
+          "oklch(83.57% 0.0128 244.26)",
+          "oklch(95% 0.0128 244.26)"
+        ]
+      },
+      "unknown": {
+        "role": "neutral",
+        "displayName": "unknown",
+        "canonical": "#586e80",
+        "tonalRamp": [
+          "oklch(15% 0.0386 243.22)",
+          "oklch(26.43% 0.0386 243.22)",
+          "oklch(37.86% 0.0386 243.22)",
+          "oklch(49.29% 0.0386 243.22)",
+          "oklch(60.71% 0.0386 243.22)",
+          "oklch(72.14% 0.0386 243.22)",
+          "oklch(83.57% 0.0386 243.22)",
+          "oklch(95% 0.0386 243.22)"
+        ]
+      },
+      "unknown-wash": {
+        "role": "neutral",
+        "displayName": "unknown wash",
+        "canonical": "#e9eff4",
+        "tonalRamp": [
+          "oklch(15% 0.0093 242.84)",
+          "oklch(26.43% 0.0093 242.84)",
+          "oklch(37.86% 0.0093 242.84)",
+          "oklch(49.29% 0.0093 242.84)",
+          "oklch(60.71% 0.0093 242.84)",
+          "oklch(72.14% 0.0093 242.84)",
+          "oklch(83.57% 0.0093 242.84)",
+          "oklch(95% 0.0093 242.84)"
+        ]
+      },
+      "evidence-mark": {
+        "role": "neutral",
+        "displayName": "evidence mark",
+        "canonical": "#d7efeb",
+        "tonalRamp": [
+          "oklch(15% 0.0258 184.72)",
+          "oklch(26.43% 0.0258 184.72)",
+          "oklch(37.86% 0.0258 184.72)",
+          "oklch(49.29% 0.0258 184.72)",
+          "oklch(60.71% 0.0258 184.72)",
+          "oklch(72.14% 0.0258 184.72)",
+          "oklch(83.57% 0.0258 184.72)",
+          "oklch(95% 0.0258 184.72)"
+        ]
+      },
+      "selected-row": {
+        "role": "neutral",
+        "displayName": "selected row",
+        "canonical": "#e8f3f2",
+        "tonalRamp": [
+          "oklch(15% 0.0117 190.44)",
+          "oklch(26.43% 0.0117 190.44)",
+          "oklch(37.86% 0.0117 190.44)",
+          "oklch(49.29% 0.0117 190.44)",
+          "oklch(60.71% 0.0117 190.44)",
+          "oklch(72.14% 0.0117 190.44)",
+          "oklch(83.57% 0.0117 190.44)",
+          "oklch(95% 0.0117 190.44)"
+        ]
+      },
+      "field-rule": {
+        "role": "neutral",
+        "displayName": "field rule",
+        "canonical": "#b9c8d3",
+        "tonalRamp": [
+          "oklch(15% 0.0226 239.49)",
+          "oklch(26.43% 0.0226 239.49)",
+          "oklch(37.86% 0.0226 239.49)",
+          "oklch(49.29% 0.0226 239.49)",
+          "oklch(60.71% 0.0226 239.49)",
+          "oklch(72.14% 0.0226 239.49)",
+          "oklch(83.57% 0.0226 239.49)",
+          "oklch(95% 0.0226 239.49)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "headline": {
+        "displayName": "Page headline",
+        "purpose": "Self-hosted Inter Variable; 36px/600 desktop and 30px at 560px."
+      },
+      "title": {
+        "displayName": "Panel title",
+        "purpose": "Compact functional panel headers; dashboard-specific titles are 13px/650."
+      },
+      "body": {
+        "displayName": "Modern UI and reading",
+        "purpose": "Inter Variable is bundled locally with its original SIL Open Font License and font-display: swap."
+      },
+      "label": {
+        "displayName": "Field label",
+        "purpose": "Compact visible control labels."
+      },
+      "source-quotation": {
+        "displayName": "Exact evidence",
+        "purpose": "17px/1.55 source reading with teal emphasis."
+      },
+      "source-id": {
+        "displayName": "Record data",
+        "purpose": "Identifiers, dates and numeric values use Inter with tabular numerals; raw audit JSON retains monospace."
+      }
+    },
+    "shadows": [
+      {
+        "name": "root-surface",
+        "value": "0 12px 32px rgba(17, 38, 61, .07)",
+        "purpose": "Declared surface token."
+      },
+      {
+        "name": "dashboard-panel",
+        "value": "0 3px 12px rgba(17, 38, 61, .035)",
+        "purpose": "Dashboard support panels and registry."
+      },
+      {
+        "name": "evidence-folio",
+        "value": "0 8px 24px rgba(17, 38, 61, .07)",
+        "purpose": "Source reading surface."
+      },
+      {
+        "name": "toast",
+        "value": "0 8px 22px rgba(17, 38, 61, .14)",
+        "purpose": "Transient notification."
+      },
+      {
+        "name": "mobile-drawer",
+        "value": "6px 0 22px rgba(9,25,39,.15)",
+        "purpose": "Inherited mobile drawer."
+      },
+      {
+        "name": "timeline-node",
+        "value": "0 0 0 3px var(--teal-100)",
+        "purpose": "Semantic teal timeline ring."
+      }
+    ],
+    "motion": [
+      {
+        "name": "button-state",
+        "value": "color .14s ease, background-color .14s ease, border-color .14s ease",
+        "purpose": "Button feedback; pressed position shifts by 1px."
+      },
+      {
+        "name": "queue-state",
+        "value": "color .16s ease, background-color .16s ease",
+        "purpose": "Queue hover and selection color feedback without a selection animation."
+      },
+      {
+        "name": "navigation-state",
+        "value": "background-color .16s ease, color .16s ease",
+        "purpose": "Navigation hover feedback."
+      },
+      {
+        "name": "drawer",
+        "value": "transform 260ms cubic-bezier(.16,1,.3,1), backdrop opacity 180ms ease",
+        "purpose": "Mobile drawer continuity with an inert background, close control and focus restoration."
+      },
+      {
+        "name": "toast-entry",
+        "value": "toast-in .18s ease-out",
+        "purpose": "Inherited opacity and 6px vertical notification entry."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation: none !important; transition: none !important; scroll-behavior: auto",
+        "purpose": "Removes animation and transitions; html restores automatic scrolling."
+      },
+      {
+        "name": "page-change",
+        "value": "content crossfade 180ms",
+        "purpose": "Keeps the current screen until the next page is ready; Native View Transition with CSS fallback."
+      },
+      {
+        "name": "source-change",
+        "value": "source-reveal 240ms cubic-bezier(.16,1,.3,1)",
+        "purpose": "Desktop publication selection preserves scroll and reveals the new exact source. Mobile selection focuses and scrolls to the source."
+      },
+      {
+        "name": "delayed-loading",
+        "value": "160ms delay before topbar feedback",
+        "purpose": "Avoids flashing a loading screen for fast requests."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "inherited-support-grid",
+        "value": "1250px"
+      },
+      {
+        "name": "compact-desktop-maximum",
+        "value": "1150px"
+      },
+      {
+        "name": "compact-desktop-minimum",
+        "value": "851px"
+      },
+      {
+        "name": "mobile-navigation",
+        "value": "850px"
+      },
+      {
+        "name": "narrow",
+        "value": "560px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary Button in the shipped analyst workspace.",
+      "html": "<button class=\"ds-button ds-button-primary\" type=\"button\">Open review</button>",
+      "css": ".ds-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;min-height:42px;padding:10px 15px;border:1px solid transparent;border-radius:9px;font:640 13px/1.15 var(--font-ui,Inter, \"Segoe UI Variable\", \"Segoe UI\", Roboto, system-ui, sans-serif);transition:color .14s ease, background-color .14s ease, border-color .14s ease}\n.ds-button:active{transform:translateY(1px)}\n.ds-button:disabled{cursor:not-allowed;transform:none;opacity:.58}\n.ds-button-primary{color:#fff;background:var(--teal-700,#087b83)}\n.ds-button-primary:hover{color:#fff;background:#05656c}\n@media (max-width: 560px){.ds-button{min-height:44px}}\n.ds-button:focus-visible{outline:3px solid var(--teal-700,#087b83);outline-offset:3px}\n@media(prefers-reduced-motion:reduce){.ds-button{animation:none!important;transition:none!important}}"
+    },
+    {
+      "name": "Separated Overview Metrics",
+      "kind": "custom",
+      "refersTo": "summary-metric",
+      "description": "Open typography separates registry state from analyst tasks without metric tiles.",
+      "html": "<section class=\"ds-dashboard-summary\" aria-label=\"Overview summary\"><div class=\"ds-summary-group\"><div class=\"ds-summary-group-heading\"><span class=\"ds-summary-group-label\">Состояние реестра</span></div><div class=\"ds-metric-grid ds-metric-grid-state\"><article class=\"ds-metric-card ds-metric-total\"><div><div class=\"ds-metric-value\">—</div><div class=\"ds-metric-label\">Всего ЖК</div><div class=\"ds-metric-note\">Count supplied by records</div></div></article></div></div><div class=\"ds-summary-group ds-summary-group--actions\"><div class=\"ds-summary-group-heading\"><span class=\"ds-summary-group-label\">Очередь аналитика</span></div><div class=\"ds-metric-grid ds-metric-grid-actions\"><article class=\"ds-metric-card\"><div><div class=\"ds-metric-value\">—</div><div class=\"ds-metric-label\">Новые публикации</div><div class=\"ds-metric-note\">Task count supplied by records</div></div></article></div></div></section>",
+      "css": ".ds-dashboard-summary{font:15px/1.55 var(--font-body,Inter, \"Segoe UI Variable\", \"Segoe UI\", Roboto, system-ui, sans-serif);display:grid;grid-template-columns:minmax(0, .92fr) minmax(0, 1.38fr);gap:22px;margin:0 0 26px}\n.ds-summary-group{min-width:0}\n.ds-summary-group--actions{padding-left:22px;border-left:1px solid var(--line,#d4dee7)}\n.ds-summary-group-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:28px;margin-bottom:8px}\n.ds-summary-group-label{color:var(--ink-800,#344d63);font:650 12px/1.3 var(--font-ui,Inter, \"Segoe UI Variable\", \"Segoe UI\", Roboto, system-ui, sans-serif);letter-spacing:.01em}\n.ds-summary-group-context{color:var(--ink-500,#61788b);font:11px/1.3 var(--font-body,Inter, \"Segoe UI Variable\", \"Segoe UI\", Roboto, system-ui, sans-serif)}\n.ds-dashboard-summary .ds-metric-grid{display:grid;gap:9px;margin:0;padding:0;border:0;border-radius:0;background:transparent}\n.ds-dashboard-summary .ds-metric-grid-state{grid-template-columns:repeat(2, minmax(0, 1fr))}\n.ds-dashboard-summary .ds-metric-grid-actions{grid-template-columns:repeat(3, minmax(0, 1fr))}\n.ds-dashboard-summary .ds-metric-card{position:relative;display:block;flex:initial;min-width:0;min-height:105px;padding:14px 15px;border:1px solid var(--line,#d4dee7);border-radius:10px;color:var(--ink-950,#172a3b);background:var(--surface-raised,#ffffff);box-shadow:none}\n.ds-dashboard-summary .ds-metric-card:hover{background:#f8fbfd;border-color:#9fb6c4}\n.ds-dashboard-summary .ds-metric-card > div:last-child{display:block;min-width:0}\n.ds-dashboard-summary .ds-metric-value{margin:2px 36px 8px 0;color:var(--navy-950,#10223a);font:650 29px/1 var(--font-ui,Inter, \"Segoe UI Variable\", \"Segoe UI\", Roboto, system-ui, sans-serif);font-variant-numeric:tabular-nums}\n.ds-dashboard-summary .ds-metric-label{margin:0;color:var(--ink-800,#344d63);font:620 12px/1.35 var(--font-ui,Inter, \"Segoe UI Variable\", \"Segoe UI\", Roboto, system-ui, sans-serif)}\n.ds-dashboard-summary .ds-metric-note{margin-top:3px;color:var(--ink-500,#61788b);font:11px/1.35 var(--font-body,Inter, \"Segoe UI Variable\", \"Segoe UI\", Roboto, system-ui, sans-serif)}\n@media (max-width: 1150px){.ds-dashboard-summary{grid-template-columns:1fr;gap:15px}\n.ds-summary-group--actions{padding:14px 0 0;border-top:1px solid var(--line,#d4dee7);border-left:0}}\n@media (max-width: 850px){.ds-dashboard-summary{gap:12px}}\n@media (max-width: 560px){.ds-summary-group-heading{align-items:baseline}\n.ds-summary-group-label{font-size:11px}\n.ds-summary-group-context{font-size:10px}\n.ds-dashboard-summary .ds-metric-grid-actions{grid-template-columns:repeat(2, minmax(0, 1fr))}\n.ds-dashboard-summary .ds-metric-card{min-height:102px;padding:12px}\n.ds-dashboard-summary .ds-metric-value{font-size:26px}}\n.ds-dashboard-summary .ds-metric-total{background:var(--navy-900,#152c49);border-color:var(--navy-900,#152c49)}\n.ds-dashboard-summary .ds-metric-total .ds-metric-value,.ds-dashboard-summary .ds-metric-total .ds-metric-label{color:#fff}\n.ds-dashboard-summary .ds-metric-total .ds-metric-note{color:#c1d0dc}.ds-dashboard-summary{grid-template-columns:2fr 3fr;border-block:1px solid #dfe6ed;padding:22px 0 28px}.ds-dashboard-summary .ds-metric-card,.ds-dashboard-summary .ds-metric-total{padding:0;min-height:0;border:0;background:transparent;border-radius:0}.ds-dashboard-summary .ds-metric-card .ds-metric-value{color:#152c49;font-size:44px;font-weight:550;line-height:1;margin:0 0 12px}.ds-dashboard-summary .ds-metric-card .ds-metric-label{color:#21374e;font-size:13px;font-weight:550}.ds-dashboard-summary .ds-metric-card .ds-metric-note{color:#627487;font-size:11px}@media(max-width:1000px){.ds-dashboard-summary{grid-template-columns:1fr}}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Secondary Button in the shipped analyst workspace.",
+      "html": "<button class=\"ds-button ds-button-secondary\" type=\"button\">Save reference</button>",
+      "css": ".ds-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;min-height:42px;padding:10px 15px;border:1px solid transparent;border-radius:9px;font:640 13px/1.15 var(--font-ui,Inter, \"Segoe UI Variable\", \"Segoe UI\", Roboto, system-ui, sans-serif);transition:color .14s ease, background-color .14s ease, border-color .14s ease}\n.ds-button:active{transform:translateY(1px)}\n.ds-button:disabled{cursor:not-allowed;transform:none;opacity:.58}\n.ds-button-secondary{color:var(--ink-800,#344d63);background:var(--surface-raised,#ffffff);border-color:#aab9c5}\n.ds-button-secondary:hover{color:var(--ink-950,#172a3b);background:#edf3f7;border-color:var(--navy-700,#42647d)}\n@media (max-width: 560px){.ds-button{min-height:44px}}\n.ds-button:focus-visible{outline:3px solid var(--teal-700,#087b83);outline-offset:3px}\n@media(prefers-reduced-motion:reduce){.ds-button{animation:none!important;transition:none!important}}"
+    },
+    {
+      "name": "Danger Button",
+      "kind": "button",
+      "refersTo": "button-danger",
+      "description": "Danger Button in the shipped analyst workspace.",
+      "html": "<button class=\"ds-button ds-button-danger\" type=\"button\">Return for review</button>",
+      "css": ".ds-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;min-height:42px;padding:10px 15px;border:1px solid transparent;border-radius:9px;font:640 13px/1.15 var(--font-ui,Inter, \"Segoe UI Variable\", \"Segoe UI\", Roboto, system-ui, sans-serif);transition:color .14s ease, background-color .14s ease, border-color .14s ease}\n.ds-button:active{transform:translateY(1px)}\n.ds-button:disabled{cursor:not-allowed;transform:none;opacity:.58}\n.ds-button-danger{color:var(--red,#a13c3c);background:var(--surface-raised,#ffffff);border-color:#ba8c84}\n.ds-button-danger:hover{background:var(--red-bg,#f7e7e5)}\n@media (max-width: 560px){.ds-button{min-height:44px}}\n.ds-button:focus-visible{outline:3px solid var(--teal-700,#087b83);outline-offset:3px}\n@media(prefers-reduced-motion:reduce){.ds-button{animation:none!important;transition:none!important}}"
+    },
+    {
+      "name": "Success Button",
+      "kind": "button",
+      "refersTo": "button-success",
+      "description": "Success Button in the shipped analyst workspace.",
+      "html": "<button class=\"ds-button ds-button-success\" type=\"button\">Confirm factor</button>",
+      "css": ".ds-button{display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;min-height:42px;padding:10px 15px;border:1px solid transparent;border-radius:9px;font:640 13px/1.15 var(--font-ui,Inter, \"Segoe UI Variable\", \"Segoe UI\", Roboto, system-ui, sans-serif);transition:color .14s ease, background-color .14s ease, border-color .14s ease}\n.ds-button:active{transform:translateY(1px)}\n.ds-button:disabled{cursor:not-allowed;transform:none;opacity:.58}\n.ds-button-success{color:var(--green,#286447);background:var(--green-bg,#e1efe7);border-color:#92a899}\n.ds-button-success:hover{background:#cbdccf}\n@media (max-width: 560px){.ds-button{min-height:44px}}\n.ds-button:focus-visible{outline:3px solid var(--teal-700,#087b83);outline-offset:3px}\n@media(prefers-reduced-motion:reduce){.ds-button{animation:none!important;transition:none!important}}"
+    },
+    {
+      "name": "Evidence Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Rounded evidence entry field with a visible teal keyboard focus.",
+      "html": "<div class=\"ds-field\"><label for=\"ds-source\">Source reference</label><input id=\"ds-source\" placeholder=\"Publication URL\"></div>",
+      "css": ".ds-field{font:15px/1.55 var(--font-body,Inter, \"Segoe UI Variable\", \"Segoe UI\", Roboto, system-ui, sans-serif);color:var(--ink-950,#172a3b);display:grid;gap:5px;min-width:140px;flex:1}\n.ds-field label{color:var(--ink-800,#344d63);font:620 11px/1.35 var(--font-ui,Inter, \"Segoe UI Variable\", \"Segoe UI\", Roboto, system-ui, sans-serif)}\n.ds-field input{width:100%;min-height:42px;padding:9px 11px;border:1px solid #a9bab7;border-radius:8px;color:var(--ink-950,#172a3b);background:var(--surface-raised,#ffffff);font:13px/1.45 var(--font-body,Inter, \"Segoe UI Variable\", \"Segoe UI\", Roboto, system-ui, sans-serif);border-color:#b9c8d3}\n.ds-field input::placeholder{color:#61788b;opacity:1}\n.ds-field input:focus{border-color:var(--teal-700,#087b83)}\n@media (max-width: 560px){.ds-field input{font-size:16px}}\n.ds-field input:focus-visible{outline:3px solid var(--teal-700,#087b83);outline-offset:3px}\n@media(prefers-reduced-motion:reduce){.ds-field input{animation:none!important;transition:none!important}}"
+    },
+    {
+      "name": "Navigation Rail",
+      "kind": "nav",
+      "description": "Light-gray navigation with navy active selection.",
+      "html": "<nav class=\"ds-rail\" aria-label=\"Workspace\"><a class=\"ds-nav-link ds-active\" href=\"#overview\" aria-current=\"page\">Overview</a><a class=\"ds-nav-link\" href=\"#sources\">Publications</a></nav>",
+      "css": ".ds-rail{display:grid;gap:3px;width:248px;padding:25px 15px 18px;background:var(--navy-950,#10223a);font:15px/1.55 var(--font-body,Inter, \"Segoe UI Variable\", \"Segoe UI\", Roboto, system-ui, sans-serif)}\n.ds-nav-link{text-decoration:none;display:flex;align-items:center;font-family:var(--font-ui,Inter, \"Segoe UI Variable\", \"Segoe UI\", Roboto, system-ui, sans-serif);position:relative;min-height:46px;gap:12px;padding:9px 11px;border:1px solid transparent;border-radius:9px;color:#c5d5e2;font-size:13px;font-weight:610;transition:background-color .16s ease, color .16s ease}\n.ds-nav-link:hover{color:#fff;background:#19334c}\n.ds-nav-link.ds-active{color:#fff;background:#203e58;box-shadow:none;border-color:#3c5c76}\n.ds-nav-link.ds-active::before{content:\"\";position:absolute;top:10px;bottom:10px;left:6px;width:2px;border-radius:2px;background:var(--stamp-light,#a4d8d5)}\n.ds-nav-link:focus-visible{outline:3px solid var(--teal-700,#087b83);outline-offset:3px}\n@media(prefers-reduced-motion:reduce){.ds-nav-link{animation:none!important;transition:none!important}}.ds-rail{background:#f7f8fa;color:#162b40;border-right:1px solid #e4e9ee}.ds-nav-link{color:#516174;font-weight:530;border:0}.ds-nav-link.ds-active{color:#fff;background:#152c49;border:0}.ds-nav-link.ds-active:before{display:none}"
+    },
+    {
+      "name": "Unknown Status",
+      "kind": "chip",
+      "refersTo": "status-unknown",
+      "description": "Bordered written unknown state, distinct from confirmed adverse evidence.",
+      "html": "<span class=\"ds-status ds-unknown\">Not checked</span>",
+      "css": ".ds-status{display:inline-flex;align-items:center;min-height:23px;padding:4px 8px;border:1px solid currentColor;border-radius:7px;font:600 11px/1.3 var(--font-ui,Inter, \"Segoe UI Variable\", \"Segoe UI\", Roboto, system-ui, sans-serif);white-space:nowrap}\n.ds-unknown{color:var(--unknown,#586e80);background:var(--unknown-bg,#e9eff4)}"
+    },
+    {
+      "name": "Analytical Panel",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "Flat white evidence panel with a ruled header and compact content.",
+      "html": "<article class=\"ds-panel\"><header class=\"ds-panel-header\"><h2 class=\"ds-panel-title\">Evidence</h2></header><div class=\"ds-panel-body\">Inspect the exact source before confirming a factor.</div></article>",
+      "css": ".ds-panel{font:15px/1.55 var(--font-body,Inter, \"Segoe UI Variable\", \"Segoe UI\", Roboto, system-ui, sans-serif);color:var(--ink-950,#172a3b);min-width:0;overflow:hidden;border:1px solid var(--line,#d4dee7);border-radius:12px;background:var(--surface-raised,#ffffff);box-shadow:none}\n.ds-panel-title{margin:0;font-family:var(--font-ui,Inter, \"Segoe UI Variable\", \"Segoe UI\", Roboto, system-ui, sans-serif);color:var(--ink-950,#172a3b);font-size:15px;font-weight:600}\n.ds-panel-header{display:flex;align-items:center;justify-content:space-between;min-height:50px;flex-wrap:wrap;gap:10px;padding:12px 15px;border-bottom:1px solid var(--line,#d4dee7)}\n.ds-panel-body{padding:15px}\n@media (max-width: 560px){.ds-panel-header{flex-wrap:wrap;padding-inline:14px}\n.ds-panel-body{padding-inline:14px}}"
+    },
+    {
+      "name": "Selected Publication Row",
+      "kind": "custom",
+      "refersTo": "queue-selected",
+      "description": "Aligned source row with a teal selected state.",
+      "html": "<a class=\"ds-queue-entry ds-selected\" href=\"#publication\" aria-current=\"true\"><span class=\"ds-queue-source\"><strong>AD-001</strong><small>15.10.2026</small></span><span><strong>Source publication</strong><small>Demonstration record</small></span><span class=\"ds-queue-state\">Awaiting review</span></a>",
+      "css": ".ds-queue-entry{font:15px/1.55 var(--font-body,Inter, \"Segoe UI Variable\", \"Segoe UI\", Roboto, system-ui, sans-serif);text-decoration:none;display:grid;align-items:center;position:relative;padding:14px 12px;border-bottom:1px solid var(--line,#d4dee7);color:var(--ink-950,#172a3b);background:transparent;transition:color .16s ease, background-color .16s ease;grid-template-columns:84px minmax(0, 1fr) 118px;gap:10px;min-height:69px;padding-inline:8px;border-color:var(--line-soft,#e6edf2)}\n.ds-queue-state{display:flex;align-items:center;justify-content:flex-start;gap:8px;font:620 11px/1.35 var(--font-ui,Inter, \"Segoe UI Variable\", \"Segoe UI\", Roboto, system-ui, sans-serif);color:var(--amber,#76520d)}\n.ds-queue-entry:hover{background:#f7fafc}\n.ds-queue-entry.ds-selected{color:var(--ink-950,#172a3b);outline:1px solid #c7b58f;outline-offset:-1px;background:#e8f3f2;outline-color:#a9cecb}\n.ds-queue-entry.ds-selected::after{content:\"\";position:absolute;top:19px;right:10px;width:6px;height:6px;border-radius:50%;background:var(--teal-700,#087b83)}\n.ds-queue-entry strong{display:block;color:inherit;font:620 14px/1.25 var(--font-ui,Inter, \"Segoe UI Variable\", \"Segoe UI\", Roboto, system-ui, sans-serif)}\n.ds-queue-entry small{display:block;margin-top:4px;color:var(--ink-650,#50697d);font-size:11px;line-height:1.35}\n.ds-queue-entry.ds-selected small{color:var(--ink-650,#50697d)}\n.ds-queue-source strong{font:600 12px/1.25 var(--font-data,Inter, \"Segoe UI\", system-ui, sans-serif);letter-spacing:-.03em}\n.ds-queue-entry.ds-selected .ds-queue-state{color:#05656c}\n@media (max-width: 560px){.ds-queue-entry{gap:9px;min-height:76px;padding:12px 8px;grid-template-columns:70px minmax(0, 1fr);padding-inline:6px}\n.ds-queue-entry strong{font-size:13px}\n.ds-queue-entry small{font-size:10px}\n.ds-queue-state{font-size:10px;grid-column:2;margin-top:-6px}}\n.ds-queue-entry:focus-visible{outline:3px solid var(--teal-700,#087b83);outline-offset:3px}\n@media(prefers-reduced-motion:reduce){.ds-queue-entry{animation:none!important;transition:none!important}}"
+    },
+    {
+      "name": "Source Folio",
+      "kind": "custom",
+      "refersTo": "evidence-folio",
+      "description": "Quiet gray source preview within a shared publication-review workspace.",
+      "html": "<article class=\"ds-evidence-folio\"><div class=\"ds-folio-meta\"><strong>AD-001</strong><span>Demonstration source</span></div><h2>Source under review</h2><blockquote class=\"ds-folio-quote\">An exact source quotation with an <mark>evidence excerpt</mark>.</blockquote><dl class=\"ds-folio-facts\"><div><dt>Legal status</dt><dd>Not checked</dd></div></dl><p class=\"ds-folio-note\">Review the source before confirming a factor.</p></article>",
+      "css": ".ds-evidence-folio{font:15px/1.55 var(--font-body,Inter, \"Segoe UI Variable\", \"Segoe UI\", Roboto, system-ui, sans-serif);min-width:0;scroll-margin-top:84px;padding:0 22px 20px;border:1px solid var(--line,#d4dee7);border-top:3px solid var(--teal-700,#087b83);border-radius:12px;background:#fff;box-shadow:0 8px 24px rgba(17, 38, 61, .07)}\n.ds-folio-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;font:11px/1.4 var(--font-body,Inter, \"Segoe UI Variable\", \"Segoe UI\", Roboto, system-ui, sans-serif);font-variant-numeric:tabular-nums;margin:0 -23px 18px;padding:12px 21px;border-bottom:1px solid var(--line-soft,#e6edf2);border-radius:9px 9px 0 0;color:var(--ink-650,#50697d);background:#f5f8fb;font-size:11px}\n.ds-folio-meta strong{padding:5px 8px;border-radius:4px;color:#fff;background:var(--navy-800,#264761);font:600 11px/1.2 var(--font-data,Inter, \"Segoe UI\", system-ui, sans-serif)}\n.ds-evidence-folio h2{margin:0 0 11px;color:var(--ink-950,#172a3b);font:600 23px/1.25 var(--font-ui,Inter, \"Segoe UI Variable\", \"Segoe UI\", Roboto, system-ui, sans-serif);font-size:20px;font-weight:650;letter-spacing:-.025em}\n.ds-folio-quote{max-height:245px;margin:0 0 20px;overflow-y:auto;color:var(--ink-950,#172a3b);font:18px/1.62 var(--font-body,Inter, \"Segoe UI Variable\", \"Segoe UI\", Roboto, system-ui, sans-serif);overflow-wrap:anywhere;padding-left:15px;border-left:3px solid var(--teal-700,#087b83);font-size:17px;line-height:1.55}\n.ds-folio-quote mark{padding:1px 3px;color:inherit;border-radius:2px;text-decoration:none;box-decoration-break:clone;-webkit-box-decoration-break:clone;background:var(--evidence-mark,#d7efeb)}\n.ds-folio-facts{margin:0 0 17px;border-top:1px solid var(--line,#d4dee7);color:var(--ink-950,#172a3b);font-size:12px;border-color:var(--line,#d4dee7)}\n.ds-folio-facts > div{display:grid;grid-template-columns:minmax(100px,.8fr) minmax(0,1.2fr);gap:12px;padding:11px 0;border-bottom:1px solid var(--line-soft,#e6edf2);padding-block:10px}\n.ds-folio-facts dt{color:var(--ink-650,#50697d)}\n.ds-folio-facts dd{margin:0;font-weight:650}\n.ds-folio-facts small{display:block;color:var(--ink-650,#50697d);font:11px/1.4 var(--font-body,Inter, \"Segoe UI Variable\", \"Segoe UI\", Roboto, system-ui, sans-serif)}\n.ds-folio-note{margin:10px 0 0;font-size:11px;line-height:1.55;color:var(--ink-500,#61788b)}\n@media (min-width: 851px) and (max-width: 1150px){.ds-evidence-folio{order:-1}}\n@media (max-width: 850px){.ds-evidence-folio{display:block;order:0}}\n@media (max-width: 560px){.ds-evidence-folio{padding:0 15px 16px}\n.ds-folio-meta{margin:0 -17px 15px;padding:12px 16px;font-size:10px;margin-inline:-16px;padding-inline:14px}\n.ds-evidence-folio h2{margin-top:14px;font-size:21px}\n.ds-folio-quote{font-size:17px;line-height:1.62}\n.ds-folio-facts > div{grid-template-columns:minmax(95px,.75fr) minmax(0,1.25fr);gap:9px}}.ds-evidence-folio{background:#f8fafb;border:0;border-left:1px solid #dce5ec;border-radius:0;box-shadow:none;order:0}.ds-folio-meta{background:transparent;border:0}.ds-folio-meta strong{color:#42647d;background:transparent}.ds-evidence-folio h2{font-size:22px;font-weight:570}.ds-folio-quote{border:0;padding:0;font-size:18px;line-height:1.65}"
+    },
+    {
+      "name": "Accessible Risk Distribution",
+      "kind": "custom",
+      "description": "Stacked risk bar with textual values; example uses the explicitly synthetic demo distribution.",
+      "html": "<div class=\"ds-risk-overview\"><div class=\"ds-risk-stack\" role=\"img\" aria-label=\"Synthetic demo: green 2, yellow 4, red 2, review 2\"><span style=\"width:20%;background:#286447\"></span><span style=\"width:40%;background:#76520d\"></span><span style=\"width:20%;background:#a13c3c\"></span><span style=\"width:20%;background:#586e80\"></span></div><p>Synthetic demo: green 2 / yellow 4 / red 2 / review 2</p></div>",
+      "css": ".ds-risk-overview{font:13px/1.5 Inter,system-ui,sans-serif;color:#344d63}.ds-risk-stack{display:flex;gap:4px;height:12px;border-radius:4px;overflow:hidden}.ds-risk-stack span{border-radius:2px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The GovTech Analytical Workspace",
+    "overview": "The approved direction follows the supplied TЗ sections 22–25: a modern professional GovTech and analytical platform. Deep navy, restrained teal, cool off-white surfaces, subtle borders and a modern sans stack establish a clear working hierarchy. The interface is an operational dashboard, not a landing page.\n\nRegistry state and analyst tasks have separate meanings and separate groups. Distribution, city coverage and recent signals support an overview of risk; publication review and the registry follow. Exact evidence, machine suggestions, human confirmation and deterministic scores remain visibly distinct. The MVP uses synthetic local records and makes no legal verdict or production-integration claim.",
+    "keyCharacteristics": [
+      "Deep navy structure with restrained teal actions.",
+      "Cool off-white ground, white panels and subtle borders.",
+      "Locally bundled Inter typography and compact functional controls.",
+      "Separate registry state, analyst queue and supporting analysis.",
+      "Labeled semantic risk colors, exact evidence and auditable decisions."
+    ],
+    "rules": [
+      {
+        "name": "The Semantic Risk Rule",
+        "body": "Risk colors always accompany explicit labels; an unknown state or AI hypothesis does not visually become a confirmed factor.",
+        "section": "colors"
+      },
+      {
+        "name": "The Functional Grouping Rule",
+        "body": "Use borders, compact spacing and shallow elevation to group work; avoid oversized decorative containers.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** follow the approved TЗ GovTech direction with navy, restrained teal and cool light surfaces.",
+      "**Do** separate registry state, analyst tasks and risk distribution by meaning.",
+      "**Do** derive counts and chart segments from records and keep text equivalents visible.",
+      "**Do** preserve original evidence, human confirmation, unknown states and synthetic-data notices.",
+      "**Do** keep controls compact, readable, accessible and consistent across RU/KZ."
+    ],
+    "donts": [
+      "**Don't** restore the rejected freight, waybill, graphite/brass or physical-stamp direction.",
+      "**Don't** add neon, cyberpunk styling, purple gradients, glass, crypto imagery or a landing-page hero.",
+      "**Don't** use oversized decorative cards or let ornament dominate analytical content.",
+      "**Don't** claim live collection, geodata, production roles, model calibration or a legal verdict."
+    ]
+  }
+}

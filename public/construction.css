@@ -1,0 +1,60 @@
+.construction-workspace { --construction-space:24px; color:var(--ink-950); }
+.construction-heading { margin:20px 0 28px; }
+.construction-heading h2 { margin:0 0 8px; font-size:22px; font-weight:600; }
+.construction-heading p,.construction-note { max-width:75ch; color:var(--ink-650); font-size:14px; line-height:1.6; overflow-wrap:anywhere; }
+.construction-section { margin:28px 0; padding-top:24px; border-top:1px solid var(--line); }
+.construction-section h2 { margin:0 0 20px; font-size:18px; }
+.construction-workspace h3 { margin:0 0 8px; font-size:16px; line-height:1.45; }
+.construction-comparison { display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+.construction-comparison>div { min-width:0; }
+.construction-comparison p { margin:6px 0; }
+.construction-comparison .construction-percentage { font-size:24px; font-weight:600; font-variant-numeric:tabular-nums; }
+.construction-upload { margin:28px 0; padding:20px; border-radius:16px; background:var(--surface); }
+.construction-workspace summary { color:var(--ink-950); font-size:16px; font-weight:600; cursor:pointer; padding:6px 0; }
+.construction-workspace summary::marker { color:var(--teal-700); }
+.construction-form { display:grid; gap:16px; margin-top:20px; }
+.construction-form .field { min-width:0; }
+.construction-form :is(input,select,textarea) { width:100%; box-sizing:border-box; font:inherit; }
+.construction-form input[type=file] { padding:10px; height:auto; }
+.construction-form input[type=file]::file-selector-button { border:0; border-radius:8px; background:var(--teal-100); color:var(--ink-950); padding:10px 12px; margin-right:12px; font:inherit; cursor:pointer; }
+.construction-form-footer { display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
+.construction-form-footer p { margin:0; }
+.construction-review-layout { display:grid; grid-template-columns:minmax(210px,30%) minmax(0,1fr); gap:28px; align-items:start; }
+.construction-review-layout:not(:has(.construction-record)) { grid-template-columns:1fr; }
+.construction-records:not(:has(.construction-record)) { display:none; }
+.construction-records { min-width:0; }
+.construction-record { display:block; padding:16px 12px; border-bottom:1px solid var(--line); border-radius:8px; text-decoration:none; color:var(--ink-950); transition:background-color 160ms ease; }
+.construction-record>span:first-child { display:flex; gap:12px; justify-content:space-between; margin-bottom:10px; font-variant-numeric:tabular-nums; }
+.construction-record:hover { background:var(--surface); }
+.construction-record.is-selected { background:var(--teal-100); }
+.construction-record-source { display:block; font-size:13px; line-height:1.5; margin-top:10px; overflow-wrap:anywhere; }
+.construction-status { display:inline-block; max-width:100%; border-radius:6px; padding:3px 8px; font-size:12px; font-weight:500; overflow-wrap:anywhere; }
+.construction-status--pending { color:var(--amber); background:var(--amber-bg); }
+.construction-status--confirmed { color:var(--green); background:var(--green-bg); }
+.construction-status--rejected { color:var(--red); background:var(--red-bg); }
+.construction-detail { min-width:0; scroll-margin-top:96px; }
+.construction-detail-title { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px; }
+.construction-detail-title h3 { margin:0; }
+.construction-current { color:var(--green); font-size:14px; font-weight:500; }
+.construction-photo { margin:16px 0 24px; }
+.construction-photo img { display:block; width:100%; height:auto; max-height:440px; object-fit:contain; border-radius:12px; background:var(--surface); }
+.construction-photo figcaption { color:var(--ink-650); font-size:13px; margin-top:8px; line-height:1.5; }
+.construction-facts { margin:20px 0; }
+.construction-facts>div { display:grid; grid-template-columns:130px minmax(0,1fr); gap:16px; padding:10px 0; border-bottom:1px solid var(--line-soft); }
+.construction-facts dt { color:var(--ink-650); font-size:14px; }
+.construction-facts dd { margin:0; font-size:14px; overflow-wrap:anywhere; white-space:pre-wrap; }
+.construction-technical { margin:20px 0; }
+.construction-technical summary { font-size:14px; }
+.construction-decision { padding:20px 0; margin-top:20px; border-top:1px solid var(--line); }
+.construction-decision p { overflow-wrap:anywhere; white-space:pre-wrap; }
+.construction-pagination { display:flex; flex-wrap:wrap; gap:16px; padding:16px 0; font-size:14px; }
+.construction-empty { padding:24px; border-radius:12px; background:var(--surface); }
+.construction-empty p { margin-bottom:0; max-width:65ch; font-size:14px; color:var(--ink-650); }
+.construction-snapshot-photo { max-width:100%; height:auto; max-height:440px; object-fit:contain; }
+.construction-workspace .data-table { min-width:580px; }
+.construction-workspace .data-table td { overflow-wrap:anywhere; max-width:32ch; }
+.construction-workspace :is(input,select,textarea,button):disabled { cursor:wait; opacity:.65; }
+.construction-inline-error { color:var(--red); }
+@media(max-width:1000px) { .construction-review-layout { grid-template-columns:minmax(185px,32%) minmax(0,1fr); gap:20px; } .construction-facts>div { grid-template-columns:1fr; gap:4px; } }
+@media(max-width:650px) { .construction-review-layout { grid-template-columns:1fr; gap:20px; } .construction-records { max-height:300px; overflow:auto; } .construction-comparison { gap:16px; } .construction-comparison h3 { font-size:14px; } .construction-upload { padding:16px; } .construction-form .form-grid { grid-template-columns:1fr; } .construction-form .span-2 { grid-column:auto; } .construction-form-footer .button { width:100%; } }
+@media(prefers-reduced-motion:reduce) { .construction-record { transition:none; } }

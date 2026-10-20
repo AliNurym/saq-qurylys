@@ -1,0 +1,9 @@
+# Replace with an owned domain whose DNS points to the intended RK server.
+# Backend env: SAQ_PUBLIC_ORIGIN=https://saq.example.kz
+#              SAQ_TRUSTED_PROXY_IP=127.0.0.1 HOST=127.0.0.1 PORT=4173
+saq.example.kz {
+    reverse_proxy 127.0.0.1:4173 {
+        # Overwrite client input. This example assumes clients connect to Caddy directly.
+        header_up X-Real-IP {remote_host}
+    }
+}

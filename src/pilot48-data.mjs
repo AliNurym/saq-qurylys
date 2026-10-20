@@ -1,0 +1,835 @@
+import { randomUUID } from "node:crypto";
+import { LEGAL_BASIS, FACTOR_STATUS, FACTORS, RISK_ZONE } from "./constants.mjs";
+
+const STAMP = "2026-10-14T09:00:00.000Z";
+const ANALYST = "Демо-сценарий (не сотрудник МИО)";
+
+// Optional synthetic 48-record pilot fixture. scenarioGroup groups scenarios for
+// display only; current hackathon zones come from the Codemasters 8.0 formula.
+
+export const PILOT48_COMPLEXES = [
+  // ==================== RED ZONE (5 complexes) ====================
+  {
+    id: "cx-ertis-deluxe",
+    objectNumber: "SQ-OBJ-0001",
+    name: "ЖК Ertis Deluxe",
+    city: "Усть-Каменогорск",
+    address: "ул. Кабанбай батыра, 45",
+    latitude: 49.9542,
+    longitude: 82.6134,
+    developerName: "ТОО «Восток-Строй Демо»",
+    developerBin: "240140012301",
+    constructionStage: "Котлован и свайное поле",
+    commissioningStatus: "UNDER_CONSTRUCTION",
+    declaredCompletionPercentage: 25,
+    declaredCompletionSource: "Рекламный буклет в Instagram",
+    declaredCompletionCapturedAt: "2026-10-09T09:00:00.000Z",
+    verifiedCompletionPercentage: 10,
+    verifiedCompletionSource: "Акт выездного визуального осмотра МИО",
+    verifiedCompletionCapturedAt: "2026-10-11T11:00:00.000Z",
+    legalBasisType: "Проверка разрешений МИО и гарантии КЖК",
+    legalBasisStatus: LEGAL_BASIS.CONFIRMED_ABSENT,
+    legalBasisSource: "Официальный ответ Управления строительства и ГАСК ВКО №04-12/1182",
+    legalBasisCheckedAt: "2026-10-10T10:00:00.000Z",
+    scenarioGroup: "red",
+    passport: {
+      district: "Центр",
+      cadastralNumber: "05:018:024:105",
+      landPurpose: "Строительство многоквартирного жилого комплекса со встроенными помещениями",
+      authorizedCompany: "ТОО «Ertis Deluxe Development»",
+      constructionNotice: "Уведомление №KZ24VWE00012849 от 12.04.2026 г.",
+      designDocumentation: "ПСД №ED-2026-01, шифр 04/26",
+      expertConclusion: "Заключение вневедомственной экспертизы №ВКО-0142/26 от 28.05.2026 г.",
+      permitDetails: "ОТСУТСТВУЕТ (Заявлений на выдачу разрешения не поступало)",
+      guaranteeDetails: "ОТСУТСТВУЕТ (Договор с АО «КЖК» не заключался)",
+      plannedCommissioning: "IV квартал 2027 г.",
+      forecastCommissioning: "II квартал 2028 г. (отставание от графика)",
+      director: "Ахметов Бауыржан Серикович",
+      founders: "Ахметов Б.С. (70%), ТОО «Восток Капитал» (30%)",
+      salesOffices: "г. Усть-Каменогорск, ул. Кабанбай батыра, 45, офис 101",
+      websites: "ertis-deluxe-demo.kz",
+      bankDetails: "ИИК KZ899472648102837462 в АО «Halyk Bank»",
+      previousViolations: "Предписание ГАСК ВКО об устранении нарушений №44 от 02.08.2026",
+      paymentEvidence: "Выявлены подтверждённые платежные поручения граждан на общую сумму 18 500 000 ₸ через фиктивные договоры бронирования",
+      paymentScheme: "Договор предварительного бронирования + первоначальный взнос 30%",
+      kazreestr: "Запись в Единой информационной системе долевого участия отсутствует",
+      mioRegistry: "Разрешение МИО на привлечение средств дольщиков не выдавалось",
+      landRegistry: "Участок в частной собственности застройщика, обременения отсутствуют",
+      dduRegistry: "0 зарегистрированных ДДУ (договоров долевого участия)"
+    }
+  },
+  {
+    id: "cx-altai-grand",
+    objectNumber: "SQ-OBJ-0002",
+    name: "ЖК Altai Grand Park",
+    city: "Усть-Каменогорск",
+    address: "пр. Сатпаева, 18",
+    latitude: 49.9281,
+    longitude: 82.6012,
+    developerName: "ТОО «Иртыш Инвест Строй»",
+    developerBin: "240240023402",
+    constructionStage: "Монтаж 3-го этажа",
+    commissioningStatus: "UNDER_CONSTRUCTION",
+    declaredCompletionPercentage: 40,
+    declaredCompletionSource: "Пост в соцсетях застройщика",
+    declaredCompletionCapturedAt: "2026-10-08T09:00:00.000Z",
+    verifiedCompletionPercentage: 25,
+    verifiedCompletionSource: "Фотофиксация инспектора ГАСК",
+    verifiedCompletionCapturedAt: "2026-10-10T14:30:00.000Z",
+    legalBasisType: "Проверка разрешения МИО",
+    legalBasisStatus: LEGAL_BASIS.CONFIRMED_ABSENT,
+    legalBasisSource: "Реестр разрешений акимата г. Усть-Каменогорска",
+    legalBasisCheckedAt: "2026-10-10T10:00:00.000Z",
+    scenarioGroup: "red",
+    passport: {
+      district: "КШТ",
+      cadastralNumber: "05:018:042:311",
+      landPurpose: "Строительство многоэтажного жилого дома с паркингом",
+      authorizedCompany: "ТОО «Altai Park Company»",
+      constructionNotice: "Уведомление №KZ91VWE00023190 от 15.01.2026 г.",
+      designDocumentation: "ПСД 18-AGP-2025",
+      expertConclusion: "Экспертное заключение №12-0091/26",
+      permitDetails: "ОТСУТСТВУЕТ (Отказ МИО от 15.06.2026 из-за отсутствия каркаса)",
+      guaranteeDetails: "ОТСУТСТВУЕТ",
+      plannedCommissioning: "III квартал 2027 г.",
+      forecastCommissioning: "IV квартал 2027 г.",
+      director: "Омаров Канат Муратович",
+      founders: "Омаров К.М. (100%)",
+      salesOffices: "пр. Сатпаева, 18/1 (мобильный отдел продаж)",
+      websites: "altai-grand-demo.kz, instagram.com/altai_grand_demo",
+      bankDetails: "ИИК KZ458264910284719284 в АО «Банк ЦентрКредит»",
+      previousViolations: "Привлечение к адм. ответственности по ст. 320 КоАП РК (штраф)",
+      paymentEvidence: "Скриншоты чеков Kaspi / переводов на счет ИП «Омарова» за платную бронь квартир от 5 граждан",
+      paymentScheme: "Договор резервирования квартиры с невозвратным задатком 1 000 000 ₸",
+      kazreestr: "Сведения отсутствуют",
+      mioRegistry: "Отказ в выдаче разрешения №ОТК-55/26",
+      landRegistry: "Кадастровый план сверен, обременений банков нет",
+      dduRegistry: "Договоры ДДУ не зарегистрированы"
+    }
+  },
+  {
+    id: "cx-oskemen-towers",
+    objectNumber: "SQ-OBJ-0003",
+    name: "ЖК Oskemen City Towers",
+    city: "Усть-Каменогорск",
+    address: "пр. Абая, 92",
+    latitude: 49.9673,
+    longitude: 82.6321,
+    developerName: "ТОО «Алтай Строй Групп»",
+    developerBin: "240340034503",
+    constructionStage: "Монолитный каркас 5 этажей",
+    commissioningStatus: "UNDER_CONSTRUCTION",
+    declaredCompletionPercentage: 55,
+    declaredCompletionSource: "Рекламный баннер",
+    declaredCompletionCapturedAt: "2026-10-05T09:00:00.000Z",
+    verifiedCompletionPercentage: 35,
+    verifiedCompletionSource: "Осмотр комиссии МИО",
+    verifiedCompletionCapturedAt: "2026-10-11T12:00:00.000Z",
+    legalBasisType: "Проверка наличия гарантии Единого оператора",
+    legalBasisStatus: LEGAL_BASIS.CONFIRMED_ABSENT,
+    legalBasisSource: "Письмо АО «Казахстанская Жилищная Компания» №08-41/910",
+    legalBasisCheckedAt: "2026-10-10T11:00:00.000Z",
+    scenarioGroup: "red",
+    passport: {
+      district: "Ульба",
+      cadastralNumber: "05:018:015:089",
+      landPurpose: "Строительство жилого комплекса со встроенными объектами торговли",
+      authorizedCompany: "ТОО «Oskemen Towers Ltd»",
+      constructionNotice: "Уведомление №KZ33VWE00045129 от 10.03.2026 г.",
+      designDocumentation: "ПСД шифр ОКТ-92/2025",
+      expertConclusion: "Заключение №05-0182/26",
+      permitDetails: "ОТСУТСТВУЕТ",
+      guaranteeDetails: "ОТСУТСТВУЕТ",
+      plannedCommissioning: "II квартал 2027 г.",
+      forecastCommissioning: "IV квартал 2027 г.",
+      director: "Смагулов Ерлан Темирович",
+      founders: "Смагулов Е.Т. (50%), ТОО «ВостокПром» (50%)",
+      salesOffices: "пр. Абая, 92, бизнес-центр «Алтай», оф. 305",
+      websites: "oskemen-towers.kz",
+      bankDetails: "ИИК KZ129482019482019482 в АО «ForteBank»",
+      previousViolations: "Протокол ГАСК о приостановлении СМР №12 от 14.09.2026",
+      paymentEvidence: "Коллективное заявление 14 граждан о внесении первоначальных взносов по договорам намерения",
+      paymentScheme: "«Инвестиционный договор» и соглашение о намерениях купли-продажи",
+      kazreestr: "Объект в реестре разрешенных не числится",
+      mioRegistry: "Заявления на выдачу разрешения не поступали",
+      landRegistry: "Участок в аренде до 2028 года",
+      dduRegistry: "Регистрация договоров долевого участия отсутствует"
+    }
+  },
+  {
+    id: "cx-samuryq-residence",
+    objectNumber: "SQ-OBJ-0004",
+    name: "ЖК Samuryq Residence",
+    city: "Усть-Каменогорск",
+    address: "пр. Есенберлина, 7",
+    latitude: 49.9192,
+    longitude: 82.5934,
+    developerName: "ТОО «Өскемен Құрылыс Холдинг»",
+    developerBin: "240440045604",
+    constructionStage: "Фундамент и цокольный этаж",
+    commissioningStatus: "UNDER_CONSTRUCTION",
+    declaredCompletionPercentage: 50,
+    declaredCompletionSource: "Рекламный видеоролик в TikTok",
+    declaredCompletionCapturedAt: "2026-10-06T09:00:00.000Z",
+    verifiedCompletionPercentage: 18,
+    verifiedCompletionSource: "Фотофиксация технадзора",
+    verifiedCompletionCapturedAt: "2026-10-10T16:00:00.000Z",
+    legalBasisType: "Проверка разрешения акимата г. Усть-Каменогорск",
+    legalBasisStatus: LEGAL_BASIS.CONFIRMED_ABSENT,
+    legalBasisSource: "Акт ревизии разрешительных документов МИО",
+    legalBasisCheckedAt: "2026-10-10T10:00:00.000Z",
+    scenarioGroup: "red",
+    passport: {
+      district: "КШТ",
+      cadastralNumber: "05:018:055:402",
+      landPurpose: "Строительство многоквартирного жилого комплекса",
+      authorizedCompany: "ТОО «Samuryq Qurylys»",
+      constructionNotice: "Уведомление №KZ88VWE00067123 от 20.02.2026 г.",
+      designDocumentation: "ПСД СР-07/2026",
+      expertConclusion: "Заключение №ВКО-0819/26",
+      permitDetails: "ОТСУТСТВУЕТ",
+      guaranteeDetails: "ОТСУТСТВУЕТ",
+      plannedCommissioning: "I квартал 2028 г.",
+      forecastCommissioning: "III квартал 2028 г.",
+      director: "Жумабеков Айдос Мухтарович",
+      founders: "Жумабеков А.М. (100%)",
+      salesOffices: "пр. Есенберлина, 7/2",
+      websites: "samuryq-residence.kz",
+      bankDetails: "ИИК KZ779283746192847192 в АО «Jusan Bank»",
+      previousViolations: "Предписание об устранении рекламы без указания разрешения",
+      paymentEvidence: "Квитанции о внесении наличных средств в кассу застройщика по договорам предварительного бронирования",
+      paymentScheme: "Платная бронь от 500 000 ₸ + рассрочка от застройщика до завершения",
+      kazreestr: "Запись отсутствует",
+      mioRegistry: "Разрешение МИО отсутствует",
+      landRegistry: "Участок оформлен под МЖК",
+      dduRegistry: "ДДУ не зарегистрированы"
+    }
+  },
+  {
+    id: "cx-baiterek-view",
+    objectNumber: "SQ-OBJ-0005",
+    name: "ЖК Baiterek View",
+    city: "Усть-Каменогорск",
+    address: "ул. Казахстан, 64",
+    latitude: 49.9511,
+    longitude: 82.6289,
+    developerName: "ТОО «Kulan Qurylys Demo»",
+    developerBin: "240540056705",
+    constructionStage: "Земляные работы",
+    commissioningStatus: "UNDER_CONSTRUCTION",
+    declaredCompletionPercentage: 30,
+    declaredCompletionSource: "Сайт застройщика baiterek-view.kz",
+    declaredCompletionCapturedAt: "2026-10-07T09:00:00.000Z",
+    verifiedCompletionPercentage: 8,
+    verifiedCompletionSource: "Акт выездного мониторинга",
+    verifiedCompletionCapturedAt: "2026-10-10T10:00:00.000Z",
+    legalBasisType: "Проверка правовых оснований привлечения дольщиков",
+    legalBasisStatus: LEGAL_BASIS.CONFIRMED_ABSENT,
+    legalBasisSource: "Справка отдела жилищных отношений акимата г. Усть-Каменогорск",
+    legalBasisCheckedAt: "2026-10-10T09:30:00.000Z",
+    scenarioGroup: "red",
+    passport: {
+      district: "Стрелка",
+      cadastralNumber: "05:018:031:198",
+      landPurpose: "Строительство жилого дома переменной этажности",
+      authorizedCompany: "ТОО «Baiterek View Invest»",
+      constructionNotice: "Уведомление №KZ19VWE00078912 от 05.04.2026 г.",
+      designDocumentation: "ПСД БВ-64/2026",
+      expertConclusion: "Заключение №11-0422/26",
+      permitDetails: "ОТСУТСТВУЕТ",
+      guaranteeDetails: "ОТСУТСТВУЕТ",
+      plannedCommissioning: "IV квартал 2027 г.",
+      forecastCommissioning: "II квартал 2028 г.",
+      director: "Нургалиев Дастан Маратович",
+      founders: "Нургалиев Д.М. (100%)",
+      salesOffices: "ул. Казахстан, 64, офис 2",
+      websites: "baiterek-view-demo.kz",
+      bankDetails: "ИИК KZ559182736451928374 в АО «Bereke Bank»",
+      previousViolations: "Предупреждение антимонопольного органа о недостоверной рекламе",
+      paymentEvidence: "Свидетельства граждан о привлечении денег по схеме «вступительный взнос в потребительский кооператив»",
+      paymentScheme: "Паевой взнос в ПК + предварительный договор мены",
+      kazreestr: "Сведения отсутствуют",
+      mioRegistry: "Разрешение МИО не выдавалось",
+      landRegistry: "Участок в частной собственности",
+      dduRegistry: "0 зарегистрированных ДДУ"
+    }
+  },
+
+  // ==================== YELLOW ZONE (12 complexes) ====================
+  {
+    id: "cx-shakarim-palace",
+    objectNumber: "SQ-OBJ-0006",
+    name: "ЖК Shakarim Palace",
+    city: "Усть-Каменогорск",
+    address: "пр. Шакарима, 12",
+    latitude: 49.9589,
+    longitude: 82.6178,
+    developerName: "ТОО «Шакарим Девелопмент»",
+    developerBin: "240640067806",
+    constructionStage: "Монолитные работы 4 этаж",
+    commissioningStatus: "UNDER_CONSTRUCTION",
+    declaredCompletionPercentage: 42,
+    declaredCompletionSource: "Отчет застройщика",
+    declaredCompletionCapturedAt: "2026-10-08T09:00:00.000Z",
+    verifiedCompletionPercentage: 38,
+    verifiedCompletionSource: "Осмотр инспектора",
+    verifiedCompletionCapturedAt: "2026-10-10T09:00:00.000Z",
+    legalBasisType: "Документы на рассмотрении комиссии МИО",
+    legalBasisStatus: LEGAL_BASIS.UNDER_REVIEW,
+    legalBasisSource: "Заявление застройщика №З-412 от 25.09.2026 в МИО",
+    legalBasisCheckedAt: "2026-10-10T11:00:00.000Z",
+    scenarioGroup: "yellow",
+    passport: { district: "Центр", cadastralNumber: "05:018:019:045", landPurpose: "МЖК с паркингом", authorizedCompany: "ТОО «Шакарим Строй»", permitDetails: "Заявка на рассмотрении комиссии МИО", guaranteeDetails: "Не заявлялась", plannedCommissioning: "III квартал 2027 г.", director: "Ибраев С.К.", salesOffices: "пр. Шакарима, 12/1", websites: "shakarim-palace.kz", paymentScheme: "Предварительная бронь без оплаты" }
+  },
+  {
+    id: "cx-ulba-riverbank",
+    objectNumber: "SQ-OBJ-0007",
+    name: "ЖК Ulba Riverbank",
+    city: "Усть-Каменогорск",
+    address: "ул. Красина, 8",
+    latitude: 49.9712,
+    longitude: 82.6245,
+    developerName: "ТОО «Ульба Инвестмент»",
+    developerBin: "240740078907",
+    constructionStage: "Кирпичная кладка стен",
+    commissioningStatus: "UNDER_CONSTRUCTION",
+    declaredCompletionPercentage: 60,
+    declaredCompletionSource: "Рекламная статья",
+    declaredCompletionCapturedAt: "2026-10-07T09:00:00.000Z",
+    verifiedCompletionPercentage: 54,
+    verifiedCompletionSource: "Осмотр площадки",
+    verifiedCompletionCapturedAt: "2026-10-10T10:00:00.000Z",
+    legalBasisType: null,
+    legalBasisStatus: LEGAL_BASIS.UNKNOWN,
+    legalBasisSource: "Запись в реестре требует дополнительной проверки",
+    legalBasisCheckedAt: null,
+    scenarioGroup: "yellow",
+    passport: { district: "Ульба", cadastralNumber: "05:018:014:112", landPurpose: "Строительство МЖК", authorizedCompany: "ТОО «Ривербанк Строй»", permitDetails: "Статус разрешения не проверен", guaranteeDetails: "Нет сведений", plannedCommissioning: "II квартал 2027 г.", director: "Васильев А.Н.", salesOffices: "ул. Красина, 8, офис 1", websites: "ulba-riverbank.kz", paymentScheme: "Платное бронирование квартир" }
+  },
+  {
+    id: "cx-kabanbay-hills",
+    objectNumber: "SQ-OBJ-0008",
+    name: "ЖК Kabanbay Hills",
+    city: "Усть-Каменогорск",
+    address: "ул. Кабанбай батыра, 112",
+    latitude: 49.9478,
+    longitude: 82.6089,
+    developerName: "ТОО «Восток Групп Холдинг»",
+    developerBin: "240840089008",
+    constructionStage: "Возведение стен",
+    commissioningStatus: "UNDER_CONSTRUCTION",
+    declaredCompletionPercentage: 35,
+    declaredCompletionSource: "Отчет застройщика",
+    declaredCompletionCapturedAt: "2026-10-06T09:00:00.000Z",
+    verifiedCompletionPercentage: 33,
+    verifiedCompletionSource: "Осмотр технадзора",
+    verifiedCompletionCapturedAt: "2026-10-09T15:00:00.000Z",
+    legalBasisType: null,
+    legalBasisStatus: LEGAL_BASIS.UNKNOWN,
+    legalBasisSource: "Запрос в госорганы отправлен, ответ ожидается",
+    legalBasisCheckedAt: null,
+    scenarioGroup: "yellow",
+    passport: { district: "КШТ", cadastralNumber: "05:018:038:204", landPurpose: "МЖК", authorizedCompany: "ТОО «КБ Hills»", permitDetails: "Сведения запрашиваются", plannedCommissioning: "IV квартал 2027 г.", director: "Алиев Р.В.", salesOffices: "ул. Кабанбай батыра, 112" }
+  },
+  {
+    id: "cx-sogry-panorama",
+    objectNumber: "SQ-OBJ-0009",
+    name: "ЖК Sogry Panorama",
+    city: "Усть-Каменогорск",
+    address: "ул. Бажова, 210",
+    latitude: 49.9882,
+    longitude: 82.6591,
+    developerName: "ТОО «Согра Сити Строй»",
+    developerBin: "240940090109",
+    constructionStage: "Кровельные работы",
+    commissioningStatus: "UNDER_CONSTRUCTION",
+    declaredCompletionPercentage: 70,
+    declaredCompletionSource: "Сайт проекта",
+    declaredCompletionCapturedAt: "2026-10-08T09:00:00.000Z",
+    verifiedCompletionPercentage: 68,
+    verifiedCompletionSource: "Осмотр инспектора",
+    verifiedCompletionCapturedAt: "2026-10-10T11:00:00.000Z",
+    legalBasisType: "Проверка гарантии",
+    legalBasisStatus: LEGAL_BASIS.UNDER_REVIEW,
+    legalBasisSource: "Копия предварительного соглашения с АО «КЖК»",
+    legalBasisCheckedAt: "2026-10-11T09:00:00.000Z",
+    scenarioGroup: "yellow",
+    passport: { district: "Согра", cadastralNumber: "05:018:082:019", landPurpose: "Строительство МЖД", authorizedCompany: "ТОО «Согра Панорама»", permitDetails: "Проверяется гарантия КЖК", plannedCommissioning: "I квартал 2027 г.", director: "Кузнецов Д.И.", salesOffices: "ул. Бажова, 210", websites: "sogry-panorama.kz" }
+  },
+  {
+    id: "cx-ablaketka-green",
+    objectNumber: "SQ-OBJ-0010",
+    name: "ЖК Ablaketka Green Park",
+    city: "Усть-Каменогорск",
+    address: "ул. Островского, 14",
+    latitude: 49.9214,
+    longitude: 82.6412,
+    developerName: "ТОО «Грин Парк Өскемен»",
+    developerBin: "241040101210",
+    constructionStage: "Фундамент",
+    commissioningStatus: "UNDER_CONSTRUCTION",
+    declaredCompletionPercentage: 20,
+    declaredCompletionSource: "Instagram",
+    declaredCompletionCapturedAt: "2026-10-05T09:00:00.000Z",
+    verifiedCompletionPercentage: 18,
+    verifiedCompletionSource: "Осмотр МИО",
+    verifiedCompletionCapturedAt: "2026-10-10T12:00:00.000Z",
+    legalBasisType: null,
+    legalBasisStatus: LEGAL_BASIS.UNKNOWN,
+    legalBasisSource: "Требуется документальная проверка",
+    legalBasisCheckedAt: null,
+    scenarioGroup: "yellow",
+    passport: { district: "Аблакетка", cadastralNumber: "05:018:071:088", landPurpose: "Строительство малоэтажного жилого комплекса", authorizedCompany: "ТОО «Грин Парк»", permitDetails: "Требуется проверка", plannedCommissioning: "IV квартал 2027 г.", director: "Сейтказин М.А.", salesOffices: "ул. Островского, 14" }
+  },
+  {
+    id: "cx-al-farabi-premium",
+    objectNumber: "SQ-OBJ-0011",
+    name: "ЖК Al-Farabi Premium",
+    city: "Усть-Каменогорск",
+    address: "пр. Аль-Фараби, 34",
+    latitude: 49.9245,
+    longitude: 82.5878,
+    developerName: "ТОО «Евразия Билдинг ВКО»",
+    developerBin: "241140112311",
+    constructionStage: "Фасадные работы",
+    commissioningStatus: "UNDER_CONSTRUCTION",
+    declaredCompletionPercentage: 82,
+    declaredCompletionSource: "Отчет застройщика",
+    declaredCompletionCapturedAt: "2026-10-07T09:00:00.000Z",
+    verifiedCompletionPercentage: 79,
+    verifiedCompletionSource: "Выездная проверка",
+    verifiedCompletionCapturedAt: "2026-10-10T14:00:00.000Z",
+    legalBasisType: "Разрешение МИО на привлечение средств дольщиков",
+    legalBasisStatus: LEGAL_BASIS.CONFIRMED_VALID,
+    legalBasisSource: "Постановление акимата г. Усть-Каменогорск №1042 от 14.02.2026",
+    legalBasisCheckedAt: "2026-10-10T10:00:00.000Z",
+    scenarioGroup: "yellow",
+    passport: { district: "КШТ", cadastralNumber: "05:018:054:190", landPurpose: "МЖК с объектами обслуживания", authorizedCompany: "ТОО «Евразия Премиум»", permitDetails: "Разрешение МИО №1042 от 14.02.2026", guaranteeDetails: "Договор поручительства БВУ", plannedCommissioning: "II квартал 2027 г.", director: "Тлеубаев К.Н.", salesOffices: "пр. Аль-Фараби, 34", websites: "alfarabi-premium.kz", previousViolations: "Жалоба дольщиков на перенос сроков" }
+  },
+  {
+    id: "cx-zhibek-zholy",
+    objectNumber: "SQ-OBJ-0012",
+    name: "ЖК Zhibek Zholy Plaza",
+    city: "Усть-Каменогорск",
+    address: "ул. Жибек Жолы, 22",
+    latitude: 49.9298,
+    longitude: 82.5965,
+    developerName: "ТОО «Жібек Жолы Құрылыс»",
+    developerBin: "241240123412",
+    constructionStage: "Отделка и внутренние сети",
+    commissioningStatus: "UNDER_CONSTRUCTION",
+    declaredCompletionPercentage: 85,
+    declaredCompletionSource: "Реклама в Instagram",
+    declaredCompletionCapturedAt: "2026-10-03T09:00:00.000Z",
+    verifiedCompletionPercentage: 60,
+    verifiedCompletionSource: "Акт инструментального осмотра МИО",
+    verifiedCompletionCapturedAt: "2026-10-11T10:00:00.000Z",
+    legalBasisType: "Гарантия АО «КЖК»",
+    legalBasisStatus: LEGAL_BASIS.CONFIRMED_VALID,
+    legalBasisSource: "Договор о предоставлении гарантии №Г-2025/119",
+    legalBasisCheckedAt: "2026-10-10T11:00:00.000Z",
+    scenarioGroup: "yellow",
+    passport: { district: "КШТ", cadastralNumber: "05:018:052:301", landPurpose: "Многоэтажный жилой дом", authorizedCompany: "ТОО «ЖЖибек Плаза»", permitDetails: "Гарантия КЖК №Г-2025/119", plannedCommissioning: "I квартал 2027 г.", director: "Махметов Б.А.", salesOffices: "ул. Жибек Жолы, 22" }
+  },
+  {
+    id: "cx-serikbayev-ave",
+    objectNumber: "SQ-OBJ-0013",
+    name: "ЖК Serikbayev Avenue",
+    city: "Усть-Каменогорск",
+    address: "ул. Серикбаева, 19",
+    latitude: 49.9621,
+    longitude: 82.6378,
+    developerName: "ТОО «Өскемен Монолит»",
+    developerBin: "241340134513",
+    constructionStage: "Каркас 2 этажа (простой)",
+    commissioningStatus: "UNDER_CONSTRUCTION",
+    declaredCompletionPercentage: 45,
+    declaredCompletionSource: "Отчет застройщика",
+    declaredCompletionCapturedAt: "2026-08-10T09:00:00.000Z",
+    verifiedCompletionPercentage: 45,
+    verifiedCompletionSource: "Акт выездной проверки",
+    verifiedCompletionCapturedAt: "2026-10-10T15:00:00.000Z",
+    legalBasisType: "Разрешение МИО",
+    legalBasisStatus: LEGAL_BASIS.CONFIRMED_VALID,
+    legalBasisSource: "Разрешение МИО №88 от 12.01.2026",
+    legalBasisCheckedAt: "2026-10-10T10:00:00.000Z",
+    scenarioGroup: "yellow",
+    passport: { district: "Ульба", cadastralNumber: "05:018:022:115", landPurpose: "Строительство МЖК", authorizedCompany: "ТОО «Монолит-С»", permitDetails: "Разрешение МИО №88 от 12.01.2026", plannedCommissioning: "IV квартал 2026 г.", forecastCommissioning: "II квартал 2027 г.", previousViolations: "Зафиксирован простой строительных работ 63 дня" }
+  },
+  {
+    id: "cx-utepov-comfort",
+    objectNumber: "SQ-OBJ-0014",
+    name: "ЖК Utepov Comfort",
+    city: "Усть-Каменогорск",
+    address: "ул. Утепова, 29",
+    latitude: 49.9231,
+    longitude: 82.6074,
+    developerName: "ТОО «Комфорт Билд Восток»",
+    developerBin: "241440145614",
+    constructionStage: "Кладка наружных стен",
+    commissioningStatus: "UNDER_CONSTRUCTION",
+    declaredCompletionPercentage: 38,
+    declaredCompletionSource: "Instagram",
+    declaredCompletionCapturedAt: "2026-10-09T09:00:00.000Z",
+    verifiedCompletionPercentage: 36,
+    verifiedCompletionSource: "Осмотр площадки",
+    verifiedCompletionCapturedAt: "2026-10-11T12:00:00.000Z",
+    legalBasisType: null,
+    legalBasisStatus: LEGAL_BASIS.UNKNOWN,
+    legalBasisSource: "Запись в реестре проверяется аналитиком",
+    legalBasisCheckedAt: null,
+    scenarioGroup: "yellow",
+    passport: { district: "КШТ", cadastralNumber: "05:018:048:078", landPurpose: "МЖК", authorizedCompany: "ТОО «Утепов Инвест»", permitDetails: "Статус не проверен", plannedCommissioning: "III квартал 2027 г.", director: "Мусаев Т.С.", salesOffices: "ул. Утепова, 29" }
+  },
+  {
+    id: "cx-karbyshev-park",
+    objectNumber: "SQ-OBJ-0015",
+    name: "ЖК Karbyshev Park",
+    city: "Усть-Каменогорск",
+    address: "ул. Карбышева, 40",
+    latitude: 49.9654,
+    longitude: 82.6045,
+    developerName: "ТОО «Парк Строй Өскемен»",
+    developerBin: "241540156715",
+    constructionStage: "Фундаментные работы",
+    commissioningStatus: "UNDER_CONSTRUCTION",
+    declaredCompletionPercentage: 22,
+    declaredCompletionSource: "Сайт проекта",
+    declaredCompletionCapturedAt: "2026-10-08T09:00:00.000Z",
+    verifiedCompletionPercentage: 20,
+    verifiedCompletionSource: "Осмотр МИО",
+    verifiedCompletionCapturedAt: "2026-10-10T16:00:00.000Z",
+    legalBasisType: null,
+    legalBasisStatus: LEGAL_BASIS.UNDER_REVIEW,
+    legalBasisSource: "Заявка на получение гарантии КЖК подана 01.10.2026",
+    legalBasisCheckedAt: "2026-10-11T14:00:00.000Z",
+    scenarioGroup: "yellow",
+    passport: { district: "Центр", cadastralNumber: "05:018:017:090", landPurpose: "Строительство жилого комплекса", authorizedCompany: "ТОО «Карбышев Девелопмент»", permitDetails: "Заявка на гарантию КЖК", plannedCommissioning: "I квартал 2028 г.", director: "Попов А.В." }
+  },
+  {
+    id: "cx-slavskogo-promenade",
+    objectNumber: "SQ-OBJ-0016",
+    name: "ЖК Slavskogo Promenade",
+    city: "Усть-Каменогорск",
+    address: "наб. Славского, 16",
+    latitude: 49.9489,
+    longitude: 82.6212,
+    developerName: "ТОО «Иртыш Набережная Строй»",
+    developerBin: "241640167816",
+    constructionStage: "Монолитные работы",
+    commissioningStatus: "UNDER_CONSTRUCTION",
+    declaredCompletionPercentage: 48,
+    declaredCompletionSource: "Реклама в Telegram",
+    declaredCompletionCapturedAt: "2026-10-07T09:00:00.000Z",
+    verifiedCompletionPercentage: 45,
+    verifiedCompletionSource: "Осмотр инспектора",
+    verifiedCompletionCapturedAt: "2026-10-10T11:00:00.000Z",
+    legalBasisType: null,
+    legalBasisStatus: LEGAL_BASIS.UNKNOWN,
+    legalBasisSource: "Запись в реестре требует дополнительной проверки",
+    legalBasisCheckedAt: null,
+    scenarioGroup: "yellow",
+    passport: { district: "Стрелка", cadastralNumber: "05:018:033:044", landPurpose: "Строительство элитного МЖК", authorizedCompany: "ТОО «Променад Девелопмент»", permitDetails: "Требуется проверка", plannedCommissioning: "II квартал 2027 г.", director: "Абдрахманов М.К.", salesOffices: "наб. Славского, 16" }
+  },
+  {
+    id: "cx-protozanov-heights",
+    objectNumber: "SQ-OBJ-0017",
+    name: "ЖК Protozanov Heights",
+    city: "Усть-Каменогорск",
+    address: "ул. Протозанова, 55",
+    latitude: 49.9534,
+    longitude: 82.6156,
+    developerName: "ТОО «Центр Сити Өскемен»",
+    developerBin: "241740178917",
+    constructionStage: "Устройство котлована",
+    commissioningStatus: "UNDER_CONSTRUCTION",
+    declaredCompletionPercentage: 15,
+    declaredCompletionSource: "Сайт объявлений",
+    declaredCompletionCapturedAt: "2026-10-05T09:00:00.000Z",
+    verifiedCompletionPercentage: 12,
+    verifiedCompletionSource: "Осмотр МИО",
+    verifiedCompletionCapturedAt: "2026-10-10T15:00:00.000Z",
+    legalBasisType: null,
+    legalBasisStatus: LEGAL_BASIS.UNKNOWN,
+    legalBasisSource: "Статус законного основания проверяется",
+    legalBasisCheckedAt: null,
+    scenarioGroup: "yellow",
+    passport: { district: "Центр", cadastralNumber: "05:018:025:110", landPurpose: "Строительство МЖД", authorizedCompany: "ТОО «Протозанов Билд»", permitDetails: "Не проверено", plannedCommissioning: "IV квартал 2027 г.", director: "Сергеев В.П." }
+  },
+
+  // ==================== GREEN ZONE (31 complexes) ====================
+  // All green complexes have confirmed legal basis (CONFIRMED_VALID), verified conditions by MIO, on schedule, low score (0–15).
+  ...[
+    { id: "cx-satpayev-elite", name: "ЖК Satpayev Elite", address: "пр. Сатпаева, 32", lat: 49.9256, lng: 82.6045, district: "КШТ", bin: "241840189018", stage: "Отделочные работы", declared: 88, verified: 87, permit: "Разрешение МИО №55/25" },
+    { id: "cx-altay-comfort", name: "ЖК Altay Comfort", address: "пр. Сатпаева, 48", lat: 49.9218, lng: 82.6089, district: "КШТ", bin: "241940190119", stage: "Монтаж фасадов", declared: 76, verified: 75, permit: "Гарантия КЖК №Г-2025/088" },
+    { id: "cx-abay-premium", name: "ЖК Abay Premium", address: "пр. Абая, 44", lat: 49.9612, lng: 82.6245, district: "Центр", bin: "242040201220", stage: "Внутренние сети", declared: 80, verified: 80, permit: "Разрешение МИО №71/25" },
+    { id: "cx-esenberlin-towers", name: "ЖК Esenberlin Towers", address: "пр. Есенберлина, 25", lat: 49.9145, lng: 82.5987, district: "КШТ", bin: "242140212321", stage: "Кровельные работы", declared: 72, verified: 71, permit: "Гарантия КЖК №Г-2026/014" },
+    { id: "cx-kazakhstan-plaza", name: "ЖК Kazakhstan Plaza", address: "ул. Казахстан, 28", lat: 49.9578, lng: 82.6212, district: "Центр", bin: "242240223422", stage: "Монолит 9 этаж", declared: 65, verified: 64, permit: "Разрешение МИО №94/25" },
+    { id: "cx-strela-coast", name: "ЖК Strela Coast", address: "наб. Славского, 42", lat: 49.9445, lng: 82.6267, district: "Стрелка", bin: "242340234523", stage: "Благоустройство", declared: 94, verified: 93, permit: "Гарантия КЖК №Г-2024/312" },
+    { id: "cx-ulba-green", name: "ЖК Ulba Green", address: "ул. Протозанова, 110", lat: 49.9612, lng: 82.6189, district: "Ульба", bin: "242440245624", stage: "Монтаж окон", declared: 74, verified: 73, permit: "Разрешение МИО №112/25" },
+    { id: "cx-solnechny-vko", name: "ЖК Солнечный", address: "пр. Независимости, 37", lat: 49.9689, lng: 82.6112, district: "Ульба", bin: "242540256725", stage: "Чистовая отделка", declared: 91, verified: 90, permit: "Разрешение МИО №33/25" },
+    { id: "cx-bayan-residence", name: "ЖК Bayan Residence", address: "ул. Бажова, 88", lat: 49.9745, lng: 82.6378, district: "Согра", bin: "242640267826", stage: "Кирпичная кладка", declared: 58, verified: 57, permit: "Гарантия КЖК №Г-2025/190" },
+    { id: "cx-tau-park", name: "ЖК Tau Park", address: "пр. Сатпаева, 60", lat: 49.9178, lng: 82.6145, district: "КШТ", bin: "242740278927", stage: "Монолитные работы", declared: 52, verified: 51, permit: "Разрешение МИО №128/25" },
+    { id: "cx-vostok-capital", name: "ЖК Vostok Capital", address: "ул. Потанина, 15", lat: 49.9521, lng: 82.6078, district: "Центр", bin: "242840289028", stage: "Каркас здания", declared: 60, verified: 59, permit: "Гарантия КЖК №Г-2026/005" },
+    { id: "cx-mikhayelis-park", name: "ЖК Mikhaelis Park", address: "ул. Михаэлиса, 22", lat: 49.9618, lng: 82.6012, district: "Ульба", bin: "242940290129", stage: "Внутренние работы", declared: 82, verified: 81, permit: "Разрешение МИО №48/25" },
+    { id: "cx-gagarina-boulevard", name: "ЖК Gagarina Boulevard", address: "бульвар Гагарина, 17", lat: 49.9698, lng: 82.5987, district: "Ульба", bin: "243040301230", stage: "Фасады и витражи", declared: 86, verified: 85, permit: "Гарантия КЖК №Г-2025/204" },
+    { id: "cx-ordzhonikidze-elite", name: "ЖК Ordzhonikidze Elite", address: "ул. Орджоникидзе, 33", lat: 49.9567, lng: 82.6145, district: "Центр", bin: "243140312331", stage: "Кровельные работы", declared: 70, verified: 69, permit: "Разрешение МИО №105/25" },
+    { id: "cx-kaysenov-house", name: "ЖК Kaysenov House", address: "ул. Кайсенова, 54", lat: 49.9512, lng: 82.6178, district: "Центр", bin: "243240323432", stage: "Отделка МОП", declared: 89, verified: 89, permit: "Разрешение МИО №62/25" },
+    { id: "cx-kirov-park", name: "ЖК Kirov Park", address: "ул. Кирова, 72", lat: 49.9534, lng: 82.6234, district: "Центр", bin: "243340334533", stage: "Монтаж лифтов", declared: 93, verified: 92, permit: "Гарантия КЖК №Г-2024/299" },
+    { id: "cx-novator-residence", name: "ЖК Novator Residence", address: "ул. Новаторов, 9", lat: 49.9589, lng: 82.6078, district: "Центр", bin: "243440345634", stage: "Стены 5 этажа", declared: 48, verified: 47, permit: "Разрешение МИО №119/25" },
+    { id: "cx-kosmicheskiy", name: "ЖК Космический", address: "ул. Космическая, 11", lat: 49.9645, lng: 82.6134, district: "Ульба", bin: "243540356735", stage: "Монолит 7 этаж", declared: 62, verified: 61, permit: "Разрешение МИО №82/25" },
+    { id: "cx-vinogradov-comfort", name: "ЖК Vinogradov Comfort", address: "ул. Виноградова, 26", lat: 49.9678, lng: 82.6056, district: "Ульба", bin: "243640367836", stage: "Фасадные работы", declared: 78, verified: 77, permit: "Гарантия КЖК №Г-2025/155" },
+    { id: "cx-krylov-terrace", name: "ЖК Krylov Terrace", address: "ул. Крылова, 68", lat: 49.9487, lng: 82.6198, district: "Стрелка", bin: "243740378937", stage: "Внутренняя отделка", declared: 84, verified: 83, permit: "Разрешение МИО №99/25" },
+    { id: "cx-myzy-city", name: "ЖК Myzy City", address: "ул. Мызы, 14", lat: 49.9623, lng: 82.6289, district: "Центр", bin: "243840389038", stage: "Стены и перегородки", declared: 54, verified: 53, permit: "Разрешение МИО №77/25" },
+    { id: "cx-gogol-residence", name: "ЖК Gogol Residence", address: "ул. Гоголя, 31", lat: 49.9576, lng: 82.6256, district: "Центр", bin: "243940390139", stage: "Чистовые работы", declared: 92, verified: 92, permit: "Гарантия КЖК №Г-2024/401" },
+    { id: "cx-microdistrict19-park", name: "ЖК Парк 19", address: "пр. Есенберлина, 38", lat: 49.9112, lng: 82.5923, district: "Микрорайон 19", bin: "244040401240", stage: "Монтаж 6 этажа", declared: 66, verified: 65, permit: "Разрешение МИО №131/25" },
+    { id: "cx-microdistrict19-comfort", name: "ЖК Комфорт 19", address: "пр. Есенберлина, 44", lat: 49.9089, lng: 82.5891, district: "Микрорайон 19", bin: "244140412341", stage: "Фундамент и паркинг", declared: 32, verified: 31, permit: "Гарантия КЖК №Г-2026/040" },
+    { id: "cx-ksht-family", name: "ЖК КШТ Фэмили", address: "ул. Утепова, 12", lat: 49.9278, lng: 82.6034, district: "КШТ", bin: "244240423442", stage: "Инженерные сети", declared: 81, verified: 80, permit: "Разрешение МИО №69/25" },
+    { id: "cx-ksht-premier", name: "ЖК КШТ Премьер", address: "ул. Утепова, 18", lat: 49.9254, lng: 82.6056, district: "КШТ", bin: "244340434543", stage: "Остекление", declared: 75, verified: 74, permit: "Гарантия КЖК №Г-2025/220" },
+    { id: "cx-irtysh-breeze", name: "ЖК Иртышский Бриз", address: "наб. Славского, 56", lat: 49.9412, lng: 82.6312, district: "Стрелка", bin: "244440445644", stage: "Кровля и фасад", declared: 87, verified: 86, permit: "Разрешение МИО №110/25" },
+    { id: "cx-ulba-panorama", name: "ЖК Ульба Панорама", address: "ул. Красина, 24", lat: 49.9734, lng: 82.6289, district: "Ульба", bin: "244540456745", stage: "Монолитные работы", declared: 59, verified: 58, permit: "Разрешение МИО №85/25" },
+    { id: "cx-sattelite-city", name: "ЖК Спутник", address: "пр. Сатпаева, 82", lat: 49.9134, lng: 82.6178, district: "КШТ", bin: "244640467846", stage: "Благоустройство двора", declared: 96, verified: 95, permit: "Гарантия КЖК №Г-2024/380" },
+    { id: "cx-altay-star", name: "ЖК Алтайская Звезда", address: "пр. Абая, 120", lat: 49.9701, lng: 82.6389, district: "Ульба", bin: "244740478947", stage: "Чистовая отделка", declared: 90, verified: 89, permit: "Разрешение МИО №58/25" },
+    { id: "cx-oskemengrad", name: "ЖК Өскеменград", address: "пр. Шакарима, 45", lat: 49.9634, lng: 82.6212, district: "Центр", bin: "244840489048", stage: "Отделка квартир", declared: 95, verified: 95, permit: "Гарантия КЖК №Г-2024/350" },
+  ].map((item, idx) => ({
+    id: item.id,
+    objectNumber: "SQ-OBJ-" + String(idx + 18).padStart(4, "0"),
+    name: item.name,
+    city: "Усть-Каменогорск",
+    address: item.address,
+    latitude: item.lat,
+    longitude: item.lng,
+    developerName: "ТОО «" + item.name.replace("ЖК ", "") + " Девелопмент»",
+    developerBin: item.bin,
+    constructionStage: item.stage,
+    commissioningStatus: "UNDER_CONSTRUCTION",
+    declaredCompletionPercentage: item.declared,
+    declaredCompletionSource: "Ежемесячный отчёт застройщика",
+    declaredCompletionCapturedAt: "2026-10-08T09:00:00.000Z",
+    verifiedCompletionPercentage: item.verified,
+    verifiedCompletionSource: "Плановый осмотр МИО",
+    verifiedCompletionCapturedAt: "2026-10-10T09:00:00.000Z",
+    legalBasisType: item.permit.startsWith("Гарантия") ? "Гарантия Единого оператора (АО «КЖК»)" : "Разрешение МИО на привлечение денег дольщиков",
+    legalBasisStatus: LEGAL_BASIS.CONFIRMED_VALID,
+    legalBasisSource: item.permit,
+    legalBasisCheckedAt: "2026-10-09T10:00:00.000Z",
+    scenarioGroup: "green",
+    passport: {
+      district: item.district,
+      cadastralNumber: "05:018:0" + String(idx + 20).padStart(2, "0") + ":" + String(100 + idx),
+      landPurpose: "Строительство многоквартирного жилого комплекса",
+      authorizedCompany: "ТОО «" + item.name.replace("ЖК ", "") + " Строй»",
+      constructionNotice: "Уведомление №KZ" + String(10 + idx) + "VWE" + String(100000 + idx),
+      designDocumentation: "ПСД шифр " + item.id.toUpperCase(),
+      expertConclusion: "Заключение экспертизы №ВКО-" + String(200 + idx) + "/25",
+      permitDetails: item.permit,
+      guaranteeDetails: item.permit.startsWith("Гарантия") ? item.permit : "Договор с БВУ",
+      plannedCommissioning: "2026-2027 гг.",
+      forecastCommissioning: "В соответствии с графиком СМР",
+      director: "Руководитель " + item.name,
+      salesOffices: item.address,
+      websites: item.id.replace("cx-", "") + "-demo.kz",
+      previousViolations: "Нарушений не выявлено",
+      paymentScheme: "Типовой договор о долевом участии (ДДУ) в соответствии с Законом РК",
+      kazreestr: "Запись в Единой информационной системе долевого участия подтверждена",
+      mioRegistry: "Разрешение зарегистрировано в реестре МИО",
+      landRegistry: "Целевое назначение соответствует проекту, земельный участок оформлен",
+      dduRegistry: "Все договоры с гражданами регистрируются в МИО (ДДУ)"
+    }
+  }))
+];
+
+// Advertisements for the monitoring feed
+export const PILOT48_ADVERTISEMENTS = [
+  // High risk ads (money attraction / illegal schemes)
+  {
+    id: "ad-ertis-01",
+    complexId: "cx-ertis-deluxe",
+    platform: "Instagram",
+    account: "@ertis_deluxe_oskemen",
+    date: "2026-10-12",
+    text: "🔥 СТАРТ ПРОДАЖ квартир в элитном ЖК Ertis Deluxe в центре Усть-Каменогорска! Внесите первоначальный взнос 30% или забронируйте квартиру с депозитом 500 000 ₸! Спешите зафиксировать минимальную цену до завершения строительства!",
+    status: "MATCHED"
+  },
+  {
+    id: "ad-altai-01",
+    complexId: "cx-altai-grand",
+    platform: "Instagram",
+    account: "@altai_grand_park_demo",
+    date: "2026-10-11",
+    text: "ЖК Altai Grand Park на пр. Сатпаева: открыто бронирование 2-х и 3-х комнатных квартир. Забронируйте сейчас — депозит 300 000 ₸. Рассрочка от застройщика 0% до сдачи объекта!",
+    status: "MATCHED"
+  },
+  {
+    id: "ad-oskemen-01",
+    complexId: "cx-oskemen-towers",
+    platform: "Telegram",
+    account: "@oskemen_towers_official",
+    date: "2026-10-10",
+    text: "ЖК Oskemen City Towers на пр. Абая. Первоначальный взнос всего 20%, гибкая рассрочка. Подпишите инвестиционный договор уже сегодня и получите скидку 5%!",
+    status: "MATCHED"
+  },
+  {
+    id: "ad-samuryq-01",
+    complexId: "cx-samuryq-residence",
+    platform: "TikTok",
+    account: "@samuryq_residence",
+    date: "2026-10-10",
+    text: "Старт продаж в новом современном ЖК Samuryq Residence на КШТ! Договор резервирования квартиры, внесите депозит от 400 000 ₸. Выгодные планировки!",
+    status: "MATCHED"
+  },
+  {
+    id: "ad-baiterek-01",
+    complexId: "cx-baiterek-view",
+    platform: "Сайт объявлений",
+    account: "Baiterek Sales Group",
+    date: "2026-10-09",
+    text: "Продажа строящихся квартир в ЖК Baiterek View на Стрелке. Предварительный договор, первоначальный взнос от 15%. Успейте купить квартиру у набережной!",
+    status: "MATCHED"
+  },
+  // Yellow zone ads (neutral advertising, queries, reviews)
+  {
+    id: "ad-shakarim-01",
+    complexId: "cx-shakarim-palace",
+    platform: "Instagram",
+    account: "@shakarim_palace_demo",
+    date: "2026-10-09",
+    text: "ЖК Shakarim Palace: консультации в отделе продаж по адресу пр. Шакарима, 12. Предварительное бронирование без внесения денег.",
+    status: "MATCHED"
+  },
+  {
+    id: "ad-ulba-01",
+    complexId: "cx-ulba-riverbank",
+    platform: "Сайт проекта",
+    account: "Ulba Riverbank Demo",
+    date: "2026-10-08",
+    text: "ЖК Ulba Riverbank на ул. Красина: старт продаж планируется после получения разрешительных документов. Оставьте заявку на просмотр.",
+    status: "MATCHED"
+  },
+  {
+    id: "ad-satpayev-01",
+    complexId: "cx-satpayev-elite",
+    platform: "Telegram",
+    account: "@satpayev_elite_demo",
+    date: "2026-10-13",
+    text: "ЖК Satpayev Elite: продажи ведутся строго по Закону РК «О долевом участии в жилищном строительстве». Разрешение акимата №55/25. Оформление ДДУ.",
+    status: "MATCHED"
+  },
+  {
+    id: "ad-altay-comf-01",
+    complexId: "cx-altay-comfort",
+    platform: "Instagram",
+    account: "@altay_comfort_vko",
+    date: "2026-10-12",
+    text: "ЖК Altay Comfort на КШТ: надежное строительство с гарантией Единого оператора АО «КЖК». Безопасная покупка по договорам долевого участия.",
+    status: "MATCHED"
+  },
+  // Pending match ads for analyst verification
+  {
+    id: "ad-pending-01",
+    complexId: null,
+    proposedComplexId: "cx-ertis-deluxe",
+    platform: "Instagram",
+    account: "@realtor_oskemen_kz",
+    date: "2026-10-14",
+    text: "Срочно переуступка или бронь в строящемся доме Ertis Deluxe! Депозит 400 000 ₸. Центр города, шикарный вид на Иртыш!",
+    status: "MATCH_PENDING"
+  },
+  {
+    id: "ad-pending-02",
+    complexId: null,
+    proposedComplexId: "cx-samuryq-residence",
+    platform: "Telegram",
+    account: "@novostroyki_oskemen",
+    date: "2026-10-14",
+    text: "ЖК Samuryq на Есенберлина: спешите забронировать планировку 45 кв.м. Первоначальный взнос от застройщика 20%!",
+    status: "MATCH_PENDING"
+  },
+  // Outdoor billboard advertisement (Наружная реклама)
+  {
+    id: "ad-outdoor-01",
+    complexId: "cx-altai-grand",
+    platform: "Наружная реклама",
+    account: "Билборд на пр. Сатпаева / ул. Утепова",
+    date: "2026-10-13",
+    text: "Рекламный щит 3х6: «ЖК ALTAI GRAND PARK — Старт продаж! Квартиры от 350 000 ₸/м². Рассрочка и бронирование». Сведения о разрешении МИО отсутствуют.",
+    status: "MATCHED"
+  }
+];
+
+// Factors for initial seeding
+export function getPilot48Factors() {
+  const factors = [];
+  const addFactor = (f) => factors.push({
+    id: f.id || randomUUID(),
+    complexId: f.complexId,
+    code: f.code,
+    status: f.status || FACTOR_STATUS.CONFIRMED,
+    sourceType: f.sourceType || "MANUAL_REVIEW",
+    sourceId: f.sourceId || null,
+    sourceLabel: f.sourceLabel || "Проверка аналитиком МИО",
+    evidenceText: f.evidenceText,
+    confidence: f.confidence || 1.0,
+    confirmedBy: f.confirmedBy || ANALYST,
+    confirmedAt: f.confirmedAt || "2026-10-10T12:00:00.000Z",
+    notes: f.notes || "Фактор верифицирован ответственным сотрудником МИО"
+  });
+
+  // Red 1: Ertis Deluxe (R1, R2, R3) => 35 + 25 + 10 = 70
+  addFactor({ complexId: "cx-ertis-deluxe", code: "R1", evidenceText: "Официальный ответ Управления строительства и ГАСК ВКО подтверждает отсутствие разрешения МИО и гарантии КЖК.", sourceLabel: "Запрос МИО / ГАСК" });
+  addFactor({ complexId: "cx-ertis-deluxe", code: "R2", evidenceText: "Внесите первоначальный взнос 30% или забронируйте квартиру с депозитом 500 000 ₸", sourceType: "ADVERTISEMENT", sourceId: "ad-ertis-01", sourceLabel: "Публикация в Instagram" });
+  addFactor({ complexId: "cx-ertis-deluxe", code: "R3", evidenceText: "СТАРТ ПРОДАЖ квартир в элитном ЖК Ertis Deluxe в центре Усть-Каменогорска", sourceType: "ADVERTISEMENT", sourceId: "ad-ertis-01", sourceLabel: "Публикация в Instagram" });
+
+  // Red 2: Altai Grand Park (R1, R2, R3) => 35 + 25 + 10 = 70
+  addFactor({ complexId: "cx-altai-grand", code: "R1", evidenceText: "Отказ акимата г. Усть-Каменогорск в выдаче разрешения на привлечение денег дольщиков.", sourceLabel: "Реестр отказов МИО" });
+  addFactor({ complexId: "cx-altai-grand", code: "R2", evidenceText: "Забронируйте сейчас — депозит 300 000 ₸. Рассрочка от застройщика 0%", sourceType: "ADVERTISEMENT", sourceId: "ad-altai-01", sourceLabel: "Instagram @altai_grand_park_demo" });
+  addFactor({ complexId: "cx-altai-grand", code: "R3", evidenceText: "ЖК Altai Grand Park на пр. Сатпаева: открыто бронирование квартир", sourceType: "ADVERTISEMENT", sourceId: "ad-altai-01", sourceLabel: "Instagram @altai_grand_park_demo" });
+
+  // Red 3: Oskemen City Towers (R1, R2, R3, R4) => 35 + 25 + 10 + 15 = 85
+  addFactor({ complexId: "cx-oskemen-towers", code: "R1", evidenceText: "Письмо АО «КЖК» подтверждает отсутствие гарантии; разрешение МИО отсутствует.", sourceLabel: "Письмо КЖК №08-41/910" });
+  addFactor({ complexId: "cx-oskemen-towers", code: "R2", evidenceText: "Первоначальный взнос всего 20%, подпишите инвестиционный договор", sourceType: "ADVERTISEMENT", sourceId: "ad-oskemen-01", sourceLabel: "Telegram @oskemen_towers_official" });
+  addFactor({ complexId: "cx-oskemen-towers", code: "R3", evidenceText: "ЖК Oskemen City Towers на пр. Абая. Старт продаж квартир", sourceType: "ADVERTISEMENT", sourceId: "ad-oskemen-01", sourceLabel: "Telegram @oskemen_towers_official" });
+  addFactor({ complexId: "cx-oskemen-towers", code: "R4", evidenceText: "Зарегистрировано коллективное обращение 14 граждан о незаконном привлечении денежных средств.", sourceType: "COMPLAINT", sourceLabel: "Коллективная жалоба граждан в акимат" });
+
+  // Red 4: Samuryq Residence (R1, R2, R3, R5) => 35 + 25 + 10 + 10 = 80
+  addFactor({ complexId: "cx-samuryq-residence", code: "R1", evidenceText: "Акт ревизии документов МИО: применимое законное основание отсутствует.", sourceLabel: "Ревизия МИО" });
+  addFactor({ complexId: "cx-samuryq-residence", code: "R2", evidenceText: "Договор резервирования квартиры, внесите депозит от 400 000 ₸", sourceType: "ADVERTISEMENT", sourceId: "ad-samuryq-01", sourceLabel: "TikTok @samuryq_residence" });
+  addFactor({ complexId: "cx-samuryq-residence", code: "R3", evidenceText: "Старт продаж в новом современном ЖК Samuryq Residence на КШТ", sourceType: "ADVERTISEMENT", sourceId: "ad-samuryq-01", sourceLabel: "TikTok @samuryq_residence" });
+  addFactor({ complexId: "cx-samuryq-residence", code: "R5", evidenceText: "Заявлено 50% готовности в рекламе от 06.10.2026; подтверждено осмотром МИО 18% от 10.10.2026. Расхождение 32 п.п.", sourceType: "CONSTRUCTION_REPORT", sourceLabel: "Сверка готовности МИО" });
+
+  // Red 5: Baiterek View (R1, R2, R3) => 35 + 25 + 10 = 70
+  addFactor({ complexId: "cx-baiterek-view", code: "R1", evidenceText: "Справка отдела жилищных отношений акимата: разрешение на привлечение дольщиков не выдавалось.", sourceLabel: "Справка ОЖО акимата г. Усть-Каменогорск" });
+  addFactor({ complexId: "cx-baiterek-view", code: "R2", evidenceText: "Предварительный договор, первоначальный взнос от 15%", sourceType: "ADVERTISEMENT", sourceId: "ad-baiterek-01", sourceLabel: "Сайт baiterek-view.kz" });
+  addFactor({ complexId: "cx-baiterek-view", code: "R3", evidenceText: "Продажа строящихся квартир в ЖК Baiterek View на Стрелке", sourceType: "ADVERTISEMENT", sourceId: "ad-baiterek-01", sourceLabel: "Сайт baiterek-view.kz" });
+
+  // Yellow factors
+  addFactor({ complexId: "cx-shakarim-palace", code: "R2", evidenceText: "Предварительное бронирование без внесения денег.", sourceType: "ADVERTISEMENT", sourceLabel: "Instagram" });
+  addFactor({ complexId: "cx-shakarim-palace", code: "R3", evidenceText: "Реклама строящегося ЖК Shakarim Palace.", sourceType: "ADVERTISEMENT", sourceLabel: "Instagram" });
+
+  addFactor({ complexId: "cx-ulba-riverbank", code: "R2", evidenceText: "Платное бронирование квартир 200 000 ₸.", sourceType: "ADVERTISEMENT", sourceLabel: "Сайт проекта" });
+  addFactor({ complexId: "cx-ulba-riverbank", code: "R3", evidenceText: "Информация о продажах квартир в ЖК Ulba Riverbank.", sourceType: "ADVERTISEMENT", sourceLabel: "Сайт проекта" });
+
+  addFactor({ complexId: "cx-al-farabi-premium", code: "R3", evidenceText: "Реклама квартир в готовом монолитном каркасе.", sourceType: "ADVERTISEMENT", sourceLabel: "Instagram" });
+  addFactor({ complexId: "cx-al-farabi-premium", code: "R4", evidenceText: "Коллективное обращение дольщиков по поводу переноса отделочных сроков.", sourceType: "COMPLAINT", sourceLabel: "Обращение дольщиков №Ж-112" });
+
+  addFactor({ complexId: "cx-zhibek-zholy", code: "R3", evidenceText: "Реклама квартир в ЖК Zhibek Zholy Plaza.", sourceType: "ADVERTISEMENT", sourceLabel: "Instagram" });
+  addFactor({ complexId: "cx-zhibek-zholy", code: "R5", evidenceText: "Заявлено 85% готовности (от 03.10.2026); подтверждено осмотром 60% (от 11.10.2026). Расхождение 25 п.п.", sourceType: "CONSTRUCTION_REPORT", sourceLabel: "Акт выездной проверки МИО" });
+
+  addFactor({ complexId: "cx-serikbayev-ave", code: "R3", evidenceText: "Рекламный щит на объекте Serikbayev Avenue.", sourceType: "ADVERTISEMENT", sourceLabel: "Наружная реклама" });
+  addFactor({ complexId: "cx-serikbayev-ave", code: "R6", evidenceText: "Документированный простой строительно-монтажных работ 63 дня.", sourceType: "CONSTRUCTION_REPORT", sourceLabel: "Журнал авторского и технадзора" });
+
+  addFactor({ complexId: "cx-utepov-comfort", code: "R2", evidenceText: "Бронирование квартир, взнос от 10%.", sourceType: "ADVERTISEMENT", sourceLabel: "Instagram" });
+  addFactor({ complexId: "cx-utepov-comfort", code: "R3", evidenceText: "Продажа квартир в строящемся доме на Утепова.", sourceType: "ADVERTISEMENT", sourceLabel: "Instagram" });
+
+  addFactor({ complexId: "cx-slavskogo-promenade", code: "R2", evidenceText: "Депозит для фиксации цены квартиры 250 000 ₸.", sourceType: "ADVERTISEMENT", sourceLabel: "Telegram" });
+  addFactor({ complexId: "cx-slavskogo-promenade", code: "R3", evidenceText: "Элитный жилой комплекс на набережной Иртыша.", sourceType: "ADVERTISEMENT", sourceLabel: "Telegram" });
+
+  // Legacy schedule-compliance notes are retained as zero-point evidence under the case model.
+  addFactor({ complexId: "cx-satpayev-elite", code: "R3", evidenceText: "Информирование о строительстве ЖК Satpayev Elite по ДДУ.", sourceType: "ADVERTISEMENT", sourceLabel: "Telegram" });
+  addFactor({ complexId: "cx-satpayev-elite", code: "R6_SCHEDULE_LEGACY", evidenceText: "Фактические темпы строительно-монтажных работ соответствуют утверждённому графику ПСД.", sourceType: "CONSTRUCTION_REPORT", sourceLabel: "График производства работ технадзора" });
+
+  addFactor({ complexId: "cx-altay-comfort", code: "R3", evidenceText: "Реклама строящегося жилого комплекса с гарантией КЖК.", sourceType: "ADVERTISEMENT", sourceLabel: "Instagram" });
+  addFactor({ complexId: "cx-altay-comfort", code: "R6_SCHEDULE_LEGACY", evidenceText: "СМР ведутся с опережением календарного плана на 14 дней.", sourceType: "CONSTRUCTION_REPORT", sourceLabel: "Отчет технадзора" });
+
+  return factors;
+}
