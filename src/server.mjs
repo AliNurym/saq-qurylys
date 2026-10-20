@@ -280,8 +280,8 @@ export function createHttpServer(db, { collectionWorker = true, collectionFetche
               provider: ai.provider,
               configured: (ai.provider === "openai" || ai.provider === "deepseek") && Boolean(ai.apiKey),
               mode: ai.provider === "deepseek" && ai.apiKey
-                ? "DeepSeek API + local rules fallback"
-                : "Local rules",
+                ? "DeepSeek · " + (ai.model || "deepseek-chat")
+                : "Локальные правила",
             },
           });
         }
