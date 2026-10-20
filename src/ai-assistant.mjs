@@ -3,6 +3,7 @@ import { listComplexes } from "./complex-service.mjs";
 
 const KAZAKHSTAN_LEGAL_SYSTEM_PROMPT = [
   "Вы — информационный помощник локального прототипа SAQ QURYLYS, не официальный представитель государства и не юрист.",
+  "На приветствие, короткую беседу и простой вопрос о самочувствии отвечайте естественно и кратко на языке пользователя; не вставляйте юридическую справку, если её не просили, затем мягко предложите помощь по теме SAQ.",
   "Если запрос не относится к жилью, строительству в Казахстане или долевому участию, коротко обозначьте границы помощника и не подменяйте ответ общей справкой о статье 7.",
   "Отвечайте на русском или казахском языке в зависимости от запроса. Разделяйте общую справку о законе и сведения из локальной карточки.",
   "Сведения SAQ QURYLYS не являются ответом государственного реестра. Если карточка помечена isDemo=true, объект, документы и выводы синтетические; никогда не описывайте их как факты о реальном ЖК.",
@@ -29,6 +30,19 @@ function isModelIdentityQuery(query) {
 function isSmallTalkQuery(query) {
   const normalized = normalizeAssistantQuery(query);
   return /^(?:привет|здравствуй(?:те)?|доброе утро|добрый день|добрый вечер|спасибо|благодарю|рахмет|сәлем|сәлеметсіз бе|қалың қалай|как дела|что ты умеешь|чем ты помогаешь|кто ты|ты кто|ты бот|ты быстрый(?:\s+[\p{L}\p{N}]+){0,3}|ты быстро отвечаешь|ты умный|ты медленный)(?:\s+[\p{L}\p{N}]+){0,2}$/u.test(normalized);
+}
+
+function isStopQuery(query) {
+  const normalized = normalizeAssistantQuery(query);
+  return /^(?:стопэ?|хватит|остановись|останови(?:сь)?|подожди|пауза|прекрати|замолчи|stop|stop it|hold on|pause|тоқта|тоқташы|болды|жетеді)(?:\s+(?:пожалуйста|плиз|please))?$/u.test(normalized);
+}
+
+function generateStopReply(lang) {
+  const isKz = lang === "kz" || lang === "kk";
+  return {
+    answer: isKz ? "Түсіндім, тоқтадым. Жалғастырғыңыз келсе, жазыңыз." : "Понял, остановился. Напиши, если захочешь продолжить.",
+    source: localAssistantSource(lang),
+  };
 }
 
 function isInAssistantScope(query) {
@@ -61,10 +75,10 @@ function generateModelIdentityReply(lang, config) {
   if (usesDeepSeek) {
     return {
       answer: isKz
-        ? `Иә. Қазір негізгі тілдік модель ретінде DeepSeek (${model}) бапталған; API қолжетімсіз болса, жергілікті ережелерге ауысамын. Осы модель туралы сұрақ жергілікті өңделді және API-ге жіберілген жоқ.`
-        : `Да. Сейчас для свободных ответов настроен DeepSeek (${model}); при недоступности API включается локальный резервный режим. Сам вопрос о модели обработан локально и в API не отправлялся.`,
+        ? "Иә. Еркін жауаптар үшін DeepSeek API қосылған; API қолжетімсіз болса, жергілікті ережелерге ауысамын. Бұл модель туралы сұрақ жергілікті өңделді және API-ге жіберілген жоқ."
+        : "Да. Для свободных ответов подключён DeepSeek API; при его недоступности включается локальный резервный режим. Этот вопрос о модели обработан локально и в API не отправлялся.",
       model,
-      source: "DeepSeek API · " + model,
+      source: localAssistantSource(lang),
     };
   }
 
@@ -180,16 +194,19 @@ export async function consultAiAssistant({ query, lang = "ru", db }) {
 
   const config = getAiConfig();
   if (isModelIdentityQuery(query)) return generateModelIdentityReply(lang, config);
+  if (isStopQuery(query)) return generateStopReply(lang);
 
   const matchedList = findMentionedComplexes(db, query);
   const matched = matchedList[0] || null;
+  const usesDeepSeek = config.provider === "deepseek" && Boolean(config.apiKey);
 
-  // Keep greetings and unrelated prompts fast and local; they should not get a canned legal answer.
-  if (!matched && isSmallTalkQuery(query)) return generateScopeReply(lang, true);
-  if (!matched && !isInAssistantScope(query)) return generateScopeReply(lang);
+  // When DeepSeek is active, let it handle brief conversation and politely redirect out-of-scope prompts.
+  // Keep the local fallback concise and conversational if no provider is configured or reachable.
+  if (!matched && !usesDeepSeek && isSmallTalkQuery(query)) return generateScopeReply(lang, true);
+  if (!matched && !usesDeepSeek && !isInAssistantScope(query)) return generateScopeReply(lang);
 
   // If DeepSeek is configured and active, call DeepSeek LLM
-  if (config.provider === "deepseek" && config.apiKey) {
+  if (usesDeepSeek) {
     try {
       let contextAddition = "";
       if (matched) {
@@ -253,5 +270,7 @@ ${demoNote}Правовой статус в записи: ${status} (это зн
   }
 
   // Fallback to local intelligent legal consultant
+  if (!matched && isSmallTalkQuery(query)) return generateScopeReply(lang, true);
+  if (!matched && !isInAssistantScope(query)) return generateScopeReply(lang);
   return generateLocalConsultation(query, matched, lang);
 }
