@@ -17,6 +17,10 @@ function normalizeAssistantQuery(query) {
   return query.toLocaleLowerCase().replace(/[^\p{L}\p{N}\s]/gu, " ").replace(/\s+/gu, " ").trim();
 }
 
+function localAssistantSource(lang) {
+  return lang === "kz" || lang === "kk" ? "SAQ · Жергілікті ережелер" : "SAQ · Локальные правила";
+}
+
 function isModelIdentityQuery(query) {
   const normalized = normalizeAssistantQuery(query);
   return /(?:кто ты|ты кто|какая ты|какой ты|какая у тебя|какой у тебя|твоя модель|твой движок|что ты за (?:модель|иишк|нейросет)|ты (?:deepseek|дипсик|chatgpt|openai|claude|gemini|llama|qwen|иишк|нейросет|бот)|are you (?:deepseek|chatgpt|an? ai)|what model are you|who are you|сен кімсің|сен қандай модель|сен дипсик)/iu.test(normalized);
@@ -38,14 +42,14 @@ function generateScopeReply(lang, smallTalk = false) {
       answer: smallTalk
         ? "Жылдам жауап беруге тырысамын 🙂 Мен SAQ QURYLYS жергілікті демо-көмекшісімін: қосымшадағы ТК карточкаларын, тәуекел факторларын және үлестік құрылыс туралы жалпы сұрақтарды түсіндіремін. Мысалы: «Oskemen Deluxe ТК мәртебесі қандай?»"
         : "Мен SAQ QURYLYS аясындағы тұрғын үй құрылысы, ТК карточкалары, тәуекел факторлары және үлестік қатысу туралы сұрақтарға көмектесемін. Бұл сұраққа тексерілген дерек жоқ. Қосымшадағы ТК атауын немесе нақты факторды көрсетіңіз. Мемлекеттік тізілімдерге тікелей қосылу жоқ.",
-      source: "SAQ Rule-based Engine",
+      source: localAssistantSource(lang),
     };
   }
   return {
     answer: smallTalk
       ? "Стараюсь отвечать быстро 🙂 Я локальный демо-помощник SAQ QURYLYS: разбираю карточки ЖК, факторы риска и общие вопросы о долевом строительстве. Например: «Каков статус ЖК Oskemen Deluxe?»"
       : "Я помогаю по теме жилищного строительства: разбираю карточки ЖК, факторы риска и общие вопросы о долевом участии. По этому запросу у меня нет проверенных данных. Уточните название ЖК из приложения или задайте вопрос по этой теме. К госреестрам приложение не подключено.",
-    source: "SAQ Rule-based Engine",
+    source: localAssistantSource(lang),
   };
 }
 
@@ -68,7 +72,7 @@ function generateModelIdentityReply(lang, config) {
     answer: isKz
       ? "Қазір бұл DeepSeek те, басқа толыққанды тілдік модель де емес: SAQ QURYLYS жергілікті ережелер мен дайын үлгілерді қолданады. Сондықтан еркін әңгіме мүмкіндігі шектеулі. Бұған дейін модель туралы сұрақ қате түрде заң туралы анықтамаға түсті; енді мұндай сұрақты тікелей танимын. DeepSeek-ті қосу үшін серверде AI_PROVIDER=deepseek және DEEPSEEK_API_KEY баптау керек; ондай режимде сұрақтар DeepSeek қызметіне жіберіледі."
       : "Сейчас это не DeepSeek и не другая полноценная языковая модель: SAQ QURYLYS отвечает локальными правилами и заготовками. Поэтому свободный разговор ограничен. Раньше вопрос о модели ошибочно попадал в юридическую справку; теперь я распознаю его отдельно. DeepSeek можно подключить серверной настройкой AI_PROVIDER=deepseek и DEEPSEEK_API_KEY; в таком режиме запросы будут отправляться сервису DeepSeek.",
-    source: "SAQ Rule-based Engine",
+    source: localAssistantSource(lang),
   };
 }
 
@@ -114,7 +118,7 @@ function generateLocalConsultation(query, matchedComplex, lang) {
             `${recordNote} Қызыл аймақ — тексеру басымдығы; заң бұзушылық не мәміленің заңсыздығы туралы қорытынды емес. Нақты шарт пен рұқсат/кепілдік құжаттарын уәкілетті органда тексеріңіз.`,
           complex: matchedComplex,
           riskZone: "red",
-          source: "SAQ Rule-based Engine",
+          source: localAssistantSource(lang),
         };
       }
       return {
@@ -125,7 +129,7 @@ function generateLocalConsultation(query, matchedComplex, lang) {
           `${recordNote} Красная зона задаёт приоритет проверки, но сама по себе не устанавливает нарушение закона и не подтверждает незаконность конкретной сделки. Сверьте документы и условия договора с уполномоченным органом.`,
         complex: matchedComplex,
         riskZone: "red",
-        source: "SAQ Rule-based Engine",
+        source: localAssistantSource(lang),
       };
     }
 
@@ -138,7 +142,7 @@ function generateLocalConsultation(query, matchedComplex, lang) {
             `${recordNote} Жасыл аймақ нысанның заңдылығы немесе құжаттардың қолданыста екені туралы кепілдік бермейді. Нақты құжаттар мен шартты тексеріңіз.`,
           complex: matchedComplex,
           riskZone: "green",
-          source: "SAQ Rule-based Engine",
+          source: localAssistantSource(lang),
         };
       }
       return {
@@ -148,7 +152,7 @@ function generateLocalConsultation(query, matchedComplex, lang) {
           `${recordNote} Зелёная зона не является гарантией законности объекта или действительности документов. Проверьте оригиналы документов и условия договора.`,
         complex: matchedComplex,
         riskZone: "green",
-        source: "SAQ Rule-based Engine",
+        source: localAssistantSource(lang),
       };
     }
   }
@@ -158,14 +162,14 @@ function generateLocalConsultation(query, matchedComplex, lang) {
     return {
       answer: `**Жалпы анықтама:** ҚР «Тұрғын үй құрылысына үлестік қатысу туралы» Заңының 7-бабы үлестік қатысуды ұйымдастырудың үш тәсілін атайды: Бірыңғай оператор кепілдігі, екінші деңгейдегі банктің жобаға қатысуы және үй қаңқасы тұрғызылғаннан кейін қаражат тарту.\n\n` +
         `Нақты мәміленің заңдылығы шарттың мазмұнына, тараптарға және құжаттарға байланысты; тек жарнамаға қарап қорытынды жасауға болмайды. SAQ QURYLYS ресми тізілімдерді тікелей тексермейді. Қолданыстағы редакцияны ИПС «Әділеттен» және рұқсатты уәкілетті органнан тексеріңіз.`,
-      source: "SAQ Rule-based Engine",
+      source: localAssistantSource(lang),
     };
   }
 
   return {
     answer: `**Общая справка:** статья 7 Закона РК № 486-V перечисляет три способа организации долевого участия: гарантия Единого оператора, участие в проекте банка второго уровня и привлечение денег после возведения каркаса.\n\n` +
       `Законность конкретной сделки зависит от условий договора, сторон и документов; по одной рекламе нельзя установить нарушение. SAQ QURYLYS не подключён к официальным реестрам и не подтверждает разрешения. Проверьте действующую редакцию в ИПС «Әділет» и документы в уполномоченном органе.`,
-    source: "SAQ Rule-based Engine",
+    source: localAssistantSource(lang),
   };
 }
 
